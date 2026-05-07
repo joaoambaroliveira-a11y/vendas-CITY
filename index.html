@@ -3,159 +3,266 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gestão de Produtos | Fashion Store</title>
+    <title>Fashion Sport | Cadastro e Catálogo</title>
     <style>
         :root {
-            --nike-black: #111;
-            --adidas-blue: #0071ae;
-            --price-green: #27ae60;
-            --bg-color: #f8f9fa;
+            --primary: #000000;
+            --accent: #e67e22;
+            --bg: #f4f4f4;
+            --white: #ffffff;
+            --success: #27ae60;
         }
 
         body {
-            font-family: 'Arial', sans-serif;
-            background-color: var(--bg-color);
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            background-color: var(--bg);
             margin: 0;
+            color: #333;
+        }
+
+        /* --- CABEÇALHO --- */
+        header {
+            background-color: var(--primary);
+            color: var(--white);
             padding: 20px;
-        }
-
-        .container {
-            max-width: 1000px;
-            margin: 0 auto;
-        }
-
-        h2 { text-align: center; color: #333; text-transform: uppercase; margin-bottom: 30px; }
-
-        /* Estilo da Vitrine */
-        .vitrine {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 25px;
-        }
-
-        .card {
-            background: white;
-            border-radius: 15px;
-            padding: 15px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
-            border: 1px solid #eee;
-        }
-
-        .card img {
-            width: 100%;
-            height: 200px;
-            object-fit: contain;
-            background: #f9f9f9;
-            border-radius: 10px;
-        }
-
-        .card-info {
-            margin-top: 15px;
-        }
-
-        .brand-label {
-            font-size: 12px;
-            font-weight: bold;
-            padding: 4px 8px;
-            border-radius: 4px;
-            color: white;
+            text-align: center;
             text-transform: uppercase;
+            letter-spacing: 4px;
         }
 
-        .nike-bg { background-color: var(--nike-black); }
-        .adidas-bg { background-color: var(--adidas-blue); }
-
-        .product-name {
-            font-size: 18px;
-            font-weight: bold;
-            margin: 10px 0;
-            color: #222;
+        .main-content {
+            max-width: 1100px;
+            margin: 40px auto;
+            padding: 0 20px;
         }
 
-        /* Área de Edição de Valor */
-        .price-container {
-            background: #f1fcf4;
-            padding: 10px;
-            border-radius: 8px;
-            border: 1px dashed var(--price-green);
+        /* --- TELA DE CADASTRO --- */
+        .registration-card {
+            background: var(--white);
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            margin-bottom: 60px;
         }
+
+        .registration-card h2 {
+            margin-top: 0;
+            border-left: 5px solid var(--accent);
+            padding-left: 15px;
+            margin-bottom: 25px;
+        }
+
+        .form-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+        }
+
+        .full-width { grid-column: span 2; }
 
         label {
-            font-size: 12px;
-            color: #666;
             display: block;
+            font-weight: 600;
+            margin-bottom: 8px;
+            font-size: 14px;
         }
 
-        .price-input {
+        input, select {
             width: 100%;
-            font-size: 20px;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            box-sizing: border-box;
+            font-size: 16px;
+        }
+
+        .btn-register {
+            background-color: var(--primary);
+            color: var(--white);
+            border: none;
+            padding: 15px 30px;
+            border-radius: 8px;
             font-weight: bold;
-            color: var(--price-green);
-            border: none;
-            background: transparent;
-            outline: none;
-        }
-
-        .btn-save {
-            width: 100%;
-            background: #333;
-            color: white;
-            border: none;
-            padding: 10px;
-            margin-top: 15px;
-            border-radius: 5px;
             cursor: pointer;
             transition: 0.3s;
+            font-size: 16px;
         }
 
-        .btn-save:hover { background: #555; }
+        .btn-register:hover {
+            background-color: var(--accent);
+        }
+
+        /* --- VITRINE DE PRODUTOS --- */
+        .section-title {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .vitrine {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .product-card {
+            background: var(--white);
+            border-radius: 12px;
+            overflow: hidden;
+            border: 1px solid #eee;
+            transition: transform 0.3s;
+        }
+
+        .product-card:hover { transform: translateY(-10px); }
+
+        .product-img {
+            width: 100%;
+            height: 250px;
+            background-color: #f9f9f9;
+            object-fit: cover;
+        }
+
+        .product-details { padding: 20px; }
+
+        .brand-badge {
+            font-size: 10px;
+            text-transform: uppercase;
+            background: #eee;
+            padding: 3px 8px;
+            border-radius: 4px;
+            font-weight: bold;
+        }
+
+        .price-edit-box {
+            margin-top: 15px;
+            padding-top: 15px;
+            border-top: 1px solid #eee;
+        }
+
+        .price-input-group {
+            display: flex;
+            align-items: center;
+            background: #f1fcf4;
+            border-radius: 6px;
+            padding: 5px 10px;
+        }
+
+        .price-input-group span { color: var(--success); font-weight: bold; }
+
+        .input-price {
+            border: none;
+            background: transparent;
+            color: var(--success);
+            font-weight: bold;
+            font-size: 20px;
+            width: 100%;
+        }
+
+        @media (max-width: 768px) {
+            .form-grid { grid-template-columns: 1fr; }
+            .full-width { grid-column: span 1; }
+        }
     </style>
 </head>
 <body>
 
-<div class="container">
-    <h2>Catálogo de Preços (Nike & Adidas)</h2>
+<header>
+    <h1>Sport Concept Store</h1>
+</header>
+
+<div class="main-content">
     
+    <section class="registration-card">
+        <h2>Cadastro de Novo Cliente</h2>
+        <form action="#">
+            <div class="form-grid">
+                <div class="full-width">
+                    <label>Nome Completo</label>
+                    <input type="text" placeholder="Ex: João Silva" required>
+                </div>
+                <div>
+                    <label>E-mail</label>
+                    <input type="email" placeholder="cliente@email.com" required>
+                </div>
+                <div>
+                    <label>WhatsApp</label>
+                    <input type="tel" placeholder="(00) 00000-0000">
+                </div>
+                <div>
+                    <label>Marca de Preferência</label>
+                    <select>
+                        <option value="nike">Nike</option>
+                        <option value="adidas">Adidas</option>
+                        <option value="ambas">Ambas</option>
+                    </select>
+                </div>
+                <div>
+                    <label>Tamanho Padrão</label>
+                    <select>
+                        <option>P</option>
+                        <option>M</option>
+                        <option>G</option>
+                        <option>GG</option>
+                    </select>
+                </div>
+                <div class="full-width">
+                    <button type="submit" class="btn-register">SALVAR CADASTRO</button>
+                </div>
+            </div>
+        </form>
+    </section>
+
+    <div class="section-title">
+        <h2>Gerenciar Preços e Modelos</h2>
+        <p>Altere os valores abaixo para atualizar a vitrine</p>
+    </div>
+
     <div class="vitrine">
-        <div class="card">
-            <span class="brand-label nike-bg">Nike</span>
-            <img src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=400" alt="Nike">
-            <div class="card-info">
-                <p class="product-name">Tênis Nike Air Max</p>
-                <div class="price-container">
-                    <label>Valor da Roupa/Calçado (R$):</label>
-                    <input type="text" class="price-input" value="599,90" placeholder="0,00">
+        <div class="product-card">
+            <img src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=500" class="product-img" alt="Nike">
+            <div class="product-details">
+                <span class="brand-badge">Nike</span>
+                <h3>Nike Air Max 270</h3>
+                <div class="price-edit-box">
+                    <label>Definir Preço:</label>
+                    <div class="price-input-group">
+                        <span>R$</span>
+                        <input type="text" class="input-price" value="899,90">
+                    </div>
                 </div>
-                <button class="btn-save">Atualizar Preço</button>
             </div>
         </div>
 
-        <div class="card">
-            <span class="brand-label adidas-bg">Adidas</span>
-            <img src="https://images.unsplash.com/photo-1520639889456-748995cc6060?w=400" alt="Adidas">
-            <div class="card-info">
-                <p class="product-name">Conjunto Adidas Treino</p>
-                <div class="price-container">
-                    <label>Valor da Roupa/Calçado (R$):</label>
-                    <input type="text" class="price-input" value="349,00" placeholder="0,00">
+        <div class="product-card">
+            <img src="https://images.unsplash.com/photo-1520639889456-748995cc6060?w=500" class="product-img" alt="Adidas">
+            <div class="product-details">
+                <span class="brand-badge">Adidas</span>
+                <h3>Agasalho Adidas Originals</h3>
+                <div class="price-edit-box">
+                    <label>Definir Preço:</label>
+                    <div class="price-input-group">
+                        <span>R$</span>
+                        <input type="text" class="input-price" value="450,00">
+                    </div>
                 </div>
-                <button class="btn-save">Atualizar Preço</button>
             </div>
         </div>
 
-        <div class="card">
-            <span class="brand-label nike-bg">Nike</span>
-            <img src="https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?w=400" alt="Nike Shirt">
-            <div class="card-info">
-                <p class="product-name">Camiseta Nike Dry-Fit</p>
-                <div class="price-container">
-                    <label>Valor da Roupa/Calçado (R$):</label>
-                    <input type="text" class="price-input" value="129,90" placeholder="0,00">
+        <div class="product-card">
+            <img src="https://images.unsplash.com/photo-1606107557195-0e29a4b5b4aa?w=500" class="product-img" alt="Nike Zoom">
+            <div class="product-details">
+                <span class="brand-badge">Nike</span>
+                <h3>Nike Zoom Pegasus</h3>
+                <div class="price-edit-box">
+                    <label>Definir Preço:</label>
+                    <div class="price-input-group">
+                        <span>R$</span>
+                        <input type="text" class="input-price" value="529,00">
+                    </div>
                 </div>
-                <button class="btn-save">Atualizar Preço</button>
             </div>
         </div>
     </div>
+
 </div>
 
 </body>
