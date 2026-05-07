@@ -3,189 +3,160 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cadastro & Vitrine | Fashion Sport</title>
+    <title>Gestão de Produtos | Fashion Store</title>
     <style>
         :root {
-            --primary-color: #111;
-            --accent-color: #ff4757;
-            --bg-color: #f1f2f6;
+            --nike-black: #111;
+            --adidas-blue: #0071ae;
+            --price-green: #27ae60;
+            --bg-color: #f8f9fa;
         }
 
         body {
-            font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+            font-family: 'Arial', sans-serif;
             background-color: var(--bg-color);
             margin: 0;
             padding: 20px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
         }
 
-        /* Estilos do Formulário (Resumidos) */
         .container {
-            background-color: #fff;
-            padding: 30px;
-            border-radius: 12px;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
-            width: 100%;
-            max-width: 800px;
-            margin-bottom: 40px;
+            max-width: 1000px;
+            margin: 0 auto;
         }
 
-        h2 { text-align: center; color: var(--primary-color); text-transform: uppercase; margin-bottom: 25px; }
+        h2 { text-align: center; color: #333; text-transform: uppercase; margin-bottom: 30px; }
 
-        .form-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 15px;
-        }
-
-        input, select {
-            width: 100%;
-            padding: 12px;
-            margin-top: 5px;
-            border: 1px solid #ddd;
-            border-radius: 6px;
-            box-sizing: border-box;
-        }
-
-        .btn-submit {
-            grid-column: span 2;
-            background-color: var(--primary-color);
-            color: white;
-            padding: 15px;
-            border: none;
-            border-radius: 6px;
-            cursor: pointer;
-            font-weight: bold;
-            font-size: 16px;
-            margin-top: 20px;
-            transition: 0.3s;
-        }
-
-        .btn-submit:hover { background-color: #333; }
-
-        /* Estilos da Vitrine de Marcas */
-        .showcase-title {
-            margin: 40px 0 20px;
-            text-align: center;
-        }
-
+        /* Estilo da Vitrine */
         .vitrine {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 20px;
-            max-width: 1000px;
-            width: 100%;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
         }
 
         .card {
             background: white;
-            border-radius: 10px;
-            overflow: hidden;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
-            transition: transform 0.3s;
-            text-align: center;
+            border-radius: 15px;
+            padding: 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+            border: 1px solid #eee;
         }
-
-        .card:hover { transform: translateY(-5px); }
 
         .card img {
             width: 100%;
-            height: 250px;
-            object-fit: cover;
+            height: 200px;
+            object-fit: contain;
+            background: #f9f9f9;
+            border-radius: 10px;
         }
 
-        .card-info { padding: 15px; }
-        .brand-tag {
+        .card-info {
+            margin-top: 15px;
+        }
+
+        .brand-label {
             font-size: 12px;
             font-weight: bold;
-            color: #777;
+            padding: 4px 8px;
+            border-radius: 4px;
+            color: white;
             text-transform: uppercase;
         }
+
+        .nike-bg { background-color: var(--nike-black); }
+        .adidas-bg { background-color: var(--adidas-blue); }
+
         .product-name {
             font-size: 18px;
-            margin: 5px 0;
+            font-weight: bold;
+            margin: 10px 0;
             color: #222;
         }
-        .price { color: var(--accent-color); font-weight: bold; font-size: 20px; }
 
-        @media (max-width: 600px) {
-            .form-grid { grid-template-columns: 1fr; }
-            .btn-submit { grid-column: span 1; }
+        /* Área de Edição de Valor */
+        .price-container {
+            background: #f1fcf4;
+            padding: 10px;
+            border-radius: 8px;
+            border: 1px dashed var(--price-green);
         }
+
+        label {
+            font-size: 12px;
+            color: #666;
+            display: block;
+        }
+
+        .price-input {
+            width: 100%;
+            font-size: 20px;
+            font-weight: bold;
+            color: var(--price-green);
+            border: none;
+            background: transparent;
+            outline: none;
+        }
+
+        .btn-save {
+            width: 100%;
+            background: #333;
+            color: white;
+            border: none;
+            padding: 10px;
+            margin-top: 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .btn-save:hover { background: #555; }
     </style>
 </head>
 <body>
 
-    <div class="container">
-        <h2>Fazer Parte da Comunidade</h2>
-        <form action="#">
-            <div class="form-grid">
-                <div style="grid-column: span 2;">
-                    <label>Nome Completo</label>
-                    <input type="text" placeholder="Nome do cliente" required>
-                </div>
-                <div>
-                    <label>E-mail</label>
-                    <input type="email" placeholder="email@exemplo.com" required>
-                </div>
-                <div>
-                    <label>Telefone</label>
-                    <input type="tel" placeholder="(00) 00000-0000">
-                </div>
-                <div>
-                    <label>Marca Favorita</label>
-                    <select>
-                        <option>Nike</option>
-                        <option>Adidas</option>
-                        <option>Outras</option>
-                    </select>
-                </div>
-                <div>
-                    <label>Tamanho</label>
-                    <select>
-                        <option>P</option>
-                        <option>M</option>
-                        <option>G</option>
-                        <option>GG</option>
-                    </select>
-                </div>
-                <button type="submit" class="btn-submit">CADASTRAR AGORA</button>
-            </div>
-        </form>
-    </div>
-
-    <h2 class="showcase-title">Destaques Nike & Adidas</h2>
+<div class="container">
+    <h2>Catálogo de Preços (Nike & Adidas)</h2>
     
     <div class="vitrine">
         <div class="card">
-            <img src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?auto=format&fit=crop&q=80&w=400" alt="Nike Air Max">
+            <span class="brand-label nike-bg">Nike</span>
+            <img src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=400" alt="Nike">
             <div class="card-info">
-                <span class="brand-tag">Nike</span>
-                <p class="product-name">Air Max Sport Classic</p>
-                <p class="price">R$ 599,90</p>
+                <p class="product-name">Tênis Nike Air Max</p>
+                <div class="price-container">
+                    <label>Valor da Roupa/Calçado (R$):</label>
+                    <input type="text" class="price-input" value="599,90" placeholder="0,00">
+                </div>
+                <button class="btn-save">Atualizar Preço</button>
             </div>
         </div>
 
         <div class="card">
-            <img src="https://images.unsplash.com/photo-1520639889456-748995cc6060?auto=format&fit=crop&q=80&w=400" alt="Adidas Jacket">
+            <span class="brand-label adidas-bg">Adidas</span>
+            <img src="https://images.unsplash.com/photo-1520639889456-748995cc6060?w=400" alt="Adidas">
             <div class="card-info">
-                <span class="brand-tag">Adidas</span>
-                <p class="product-name">Jaqueta Essentials Track</p>
-                <p class="price">R$ 349,90</p>
+                <p class="product-name">Conjunto Adidas Treino</p>
+                <div class="price-container">
+                    <label>Valor da Roupa/Calçado (R$):</label>
+                    <input type="text" class="price-input" value="349,00" placeholder="0,00">
+                </div>
+                <button class="btn-save">Atualizar Preço</button>
             </div>
         </div>
 
         <div class="card">
-            <img src="https://images.unsplash.com/photo-1606107557195-0e29a4b5b4aa?auto=format&fit=crop&q=80&w=400" alt="Nike Zoom">
+            <span class="brand-label nike-bg">Nike</span>
+            <img src="https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?w=400" alt="Nike Shirt">
             <div class="card-info">
-                <span class="brand-tag">Nike</span>
-                <p class="product-name">Nike Zoom Pegasus</p>
-                <p class="price">R$ 489,00</p>
+                <p class="product-name">Camiseta Nike Dry-Fit</p>
+                <div class="price-container">
+                    <label>Valor da Roupa/Calçado (R$):</label>
+                    <input type="text" class="price-input" value="129,90" placeholder="0,00">
+                </div>
+                <button class="btn-save">Atualizar Preço</button>
             </div>
         </div>
     </div>
+</div>
 
 </body>
 </html>
