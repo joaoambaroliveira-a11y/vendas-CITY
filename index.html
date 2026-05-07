@@ -1,1 +1,154 @@
-joao
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro de Cliente | Fashion Store</title>
+    <style>
+        :root {
+            --primary-color: #2c3e50;
+            --accent-color: #e67e22;
+            --bg-color: #f4f7f6;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-color);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .container {
+            background-color: #fff;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            width: 100%;
+            max-width: 600px;
+        }
+
+        h2 {
+            text-align: center;
+            color: var(--primary-color);
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+            color: #555;
+        }
+
+        input[type="text"],
+        input[type="email"],
+        input[type="tel"],
+        input[type="date"],
+        select {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            box-sizing: border-box; /* Garante que o padding não aumente a largura */
+        }
+
+        .row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+        }
+
+        .btn-submit {
+            width: 100%;
+            background-color: var(--primary-color);
+            color: white;
+            padding: 12px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background 0.3s ease;
+            margin-top: 10px;
+        }
+
+        .btn-submit:hover {
+            background-color: var(--accent-color);
+        }
+
+        @media (max-width: 480px) {
+            .row {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h2>Cadastro de Cliente</h2>
+    <form action="#" method="POST">
+        <div class="form-group">
+            <label for="nome">Nome Completo</label>
+            <input type="text" id="nome" name="nome" placeholder="Ex: Maria Silva" required>
+        </div>
+
+        <div class="row">
+            <div class="form-group">
+                <label for="email">E-mail</label>
+                <input type="email" id="email" name="email" placeholder="maria@email.com" required>
+            </div>
+            <div class="form-group">
+                <label for="telefone">Telefone/WhatsApp</label>
+                <input type="tel" id="telefone" name="telefone" placeholder="(11) 99999-9999">
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="form-group">
+                <label for="nascimento">Data de Nascimento</label>
+                <input type="date" id="nascimento" name="nascimento">
+            </div>
+            <div class="form-group">
+                <label for="genero">Gênero</label>
+                <select id="genero" name="genero">
+                    <option value="">Selecione...</option>
+                    <option value="feminino">Feminino</option>
+                    <option value="masculino">Masculino</option>
+                    <option value="outro">Outro/Prefiro não dizer</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="tamanho">Tamanho de Roupa Preferido</label>
+            <select id="tamanho" name="tamanho">
+                <option value="pp">PP</option>
+                <option value="p">P</option>
+                <option value="m" selected>M</option>
+                <option value="g">G</option>
+                <option value="gg">GG</option>
+                <option value="plus">Plus Size</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label>
+                <input type="checkbox" name="newsletter" checked> 
+                Desejo receber promoções e novidades por e-mail.
+            </label>
+        </div>
+
+        <button type="submit" class="btn-submit">Finalizar Cadastro</button>
+    </form>
+</div>
+
+</body>
+</html>
