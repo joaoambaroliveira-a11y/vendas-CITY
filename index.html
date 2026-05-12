@@ -1,192 +1,29 @@
-<!DOCTYPE html>
-<html lang="pt-br">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Nike Exclusive Store</title>
-    <style>
-        :root {
-            --nike-black: #111;
-            --nike-white: #fff;
-            --nike-gray: #f5f5f5;
-        }
-
-        body {
-            font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: var(--nike-white);
-        }
-
-        /* --- TELA DE CADASTRO (INICIAL) --- */
-        #tela-cadastro {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            background-color: var(--nike-black);
-            color: white;
-        }
-
-        .cadastro-box {
-            background: white;
-            color: black;
-            padding: 40px;
-            border-radius: 4px;
-            width: 100%;
-            max-width: 400px;
-            text-align: center;
-        }
-
-        .nike-logo-svg { width: 60px; margin-bottom: 20px; }
-
-        input {
-            width: 100%;
-            padding: 15px;
-            margin: 10px 0;
-            border: 1px solid #ccc;
-            border-radius: 2px;
-            box-sizing: border-box;
-        }
-
-        .btn-entrar {
-            width: 100%;
-            background: black;
-            color: white;
-            padding: 15px;
-            border: none;
-            font-weight: bold;
-            text-transform: uppercase;
-            cursor: pointer;
-            margin-top: 10px;
-        }
-
-        /* --- SITE DE ROUPAS (ESCONDIDO INICIALMENTE) --- */
-        #site-principal {
-            display: none; /* Escondido até o cadastro ser feito */
-        }
-
-        header {
-            padding: 20px 5%;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            border-bottom: 1px solid #eee;
-        }
-
-        .vitrine {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 20px;
-            padding: 40px 5%;
-        }
-
-        .card {
-            border: 1px solid transparent;
-            transition: 0.3s;
-            padding: 10px;
-        }
-
-        .card:hover { border: 1px solid #eee; }
-
-        .card img {
-            width: 100%;
-            height: 300px;
-            object-fit: cover;
-            background: var(--nike-gray);
-        }
-
-        .card h3 { font-size: 16px; margin: 10px 0 5px; }
-        .card p { color: #757575; font-size: 14px; margin: 0; }
-        .card .preco { color: black; font-weight: bold; margin-top: 10px; font-size: 18px; }
-
-        .btn-comprar {
-            display: block;
-            background: black;
-            color: white;
-            text-align: center;
-            padding: 12px;
-            text-decoration: none;
-            margin-top: 15px;
-            font-size: 14px;
-            font-weight: bold;
-        }
-    </style>
-</head>
-<body>
-
-    <div id="tela-cadastro">
-        <div class="cadastro-box">
-            <svg class="nike-logo-svg" viewBox="0 0 24 24"><path d="M21 7L7.5 15.5l-4.5-2V11l4.5 2L21 7z"></path></svg>
-            <h2>SUA CONTA PARA TUDO DA NIKE</h2>
-            <p>Cadastre-se para acessar produtos exclusivos.</p>
-            <form onsubmit="entrarNoSite(event)">
-                <input type="text" placeholder="Nome Completo" required>
-                <input type="email" placeholder="Endereço de e-mail" required>
-                <input type="password" placeholder="Senha" required>
-                <button type="submit" class="btn-entrar">Criar Conta</button>
-            </form>
-        </div>
+<section id="section-mizuno">
+    <div class="mizuno-header">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b1/Mizuno_logo.svg/2560px-Mizuno_logo.svg.png" alt="Mizuno Logo" class="mizuno-logo">
+        <h2>Performance e Tecnologia</h2>
     </div>
 
-    <div id="site-principal">
-        <header>
-            <div style="font-weight: bold; font-size: 24px;">NIKE STORE</div>
-            <nav>Masculino | Feminino | Infantil | Ofertas</nav>
-        </header>
-
-        <div style="padding: 20px 5%;">
-            <h1>Produtos em Destaque</h1>
+    <div class="mizuno-grid">
+        <div class="mizuno-card">
+            <div class="mizuno-badge">Lançamento</div>
+            <img src="https://images.mizuno.com.br/1000x1000/providers/20d88562-b94d-4870-85f8-b39174092f3b/products/4149021/0088/tenis-mizuno-wave-prophecy-13-azul-marinho-0088-1.jpg" alt="Mizuno Wave Prophecy">
+            <div class="mizuno-info">
+                <h3>Wave Prophecy 13</h3>
+                <p>O auge do amortecimento e estabilidade.</p>
+                <span class="mizuno-price">R$ 1.599,90</span>
+                <a href="#" class="mizuno-btn">Comprar Agora</a>
+            </div>
         </div>
 
-        <div class="vitrine">
-            <div class="card">
-                <img src="https://images.unsplash.com/photo-1605348532760-6753d2c43329?w=500" alt="Nike Jordan">
-                <h3>Air Jordan 1 Retro High</h3>
-                <p>Tênis Masculino</p>
-                <p class="preco">R$ 1.299,90</p>
-                <a href="#" class="btn-comprar">COMPRAR</a>
-            </div>
-
-            <div class="card">
-                <img src="https://images.unsplash.com/photo-1552346154-21d32810aba3?w=500" alt="Nike Hoodie">
-                <h3>Moletom Nike Sportswear</h3>
-                <p>Vestuário Unissex</p>
-                <p class="preco">R$ 399,90</p>
-                <a href="#" class="btn-comprar">COMPRAR</a>
-            </div>
-
-            <div class="card">
-                <img src="https://images.unsplash.com/photo-1595950653106-6c9ebd614d3a?w=500" alt="Nike Air Force">
-                <h3>Nike Air Force 1 '07</h3>
-                <p>Tênis Feminino</p>
-                <p class="preco">R$ 749,90</p>
-                <a href="#" class="btn-comprar">COMPRAR</a>
-            </div>
-
-            <div class="card">
-                <img src="https://images.unsplash.com/photo-1511746015091-c6741748232c?w=500" alt="Shorts">
-                <h3>Shorts Nike Dri-FIT</h3>
-                <p>Performance Treino</p>
-                <p class="preco">R$ 159,90</p>
-                <a href="#" class="btn-comprar">COMPRAR</a>
+        <div class="mizuno-card">
+            <img src="https://images.mizuno.com.br/1000x1000/providers/20d88562-b94d-4870-85f8-b39174092f3b/products/4149250/0259/tenis-mizuno-wave-sky-7-cinza-0259-1.jpg" alt="Mizuno Wave Sky">
+            <div class="mizuno-info">
+                <h3>Wave Sky 7</h3>
+                <p>Sinta a sensação de flutuar na corrida.</p>
+                <span class="mizuno-price">R$ 999,90</span>
+                <a href="#" class="mizuno-btn">Comprar Agora</a>
             </div>
         </div>
     </div>
-
-    <script>
-        function entrarNoSite(event) {
-            event.preventDefault(); // Impede a página de recarregar
-            
-            // Esconde a tela de cadastro
-            document.getElementById('tela-cadastro').style.display = 'none';
-            
-            // Mostra o site principal
-            document.getElementById('site-principal').style.display = 'block';
-            
-            window.scrollTo(0, 0); // Sobe para o topo do site
-        }
-    </script>
-
-</body>
-</html>
+</section>
