@@ -1,106 +1,106 @@
-joao
-/* Reset local para não interferir no seu site */
+/* Configurações de Cores - Altere aqui para combinar com seu site */
+:root {
+    --mizuno-principal: #001e62; /* Azul Marinho Mizuno */
+    --mizuno-destaque: #e60012;  /* Vermelho Detalhe (opcional) */
+    --mizuno-fundo-card: #ffffff;
+    --mizuno-texto: #333333;
+    --mizuno-botao-hover: #0033a0;
+}
+
 #section-mizuno {
-    font-family: 'Inter', sans-serif;
-    background-color: #f4f4f4;
-    padding: 60px 20px;
-    color: #333;
+    font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    background-color: #f9f9f9;
+    padding: 80px 20px;
+    color: var(--mizuno-texto);
 }
 
 #section-mizuno .mizuno-header {
     text-align: center;
-    margin-bottom: 40px;
+    margin-bottom: 50px;
 }
 
 #section-mizuno .mizuno-logo {
-    width: 120px;
-    margin-bottom: 10px;
+    max-width: 150px;
+    filter: grayscale(1); /* Deixa a logo discreta */
+    transition: filter 0.3s;
+    margin-bottom: 15px;
 }
 
-#section-mizuno h2 {
-    font-size: 1.5rem;
-    text-transform: uppercase;
-    letter-spacing: 2px;
-    color: #001e62; /* Azul Mizuno */
+#section-mizuno .mizuno-header:hover .mizuno-logo {
+    filter: grayscale(0); /* Logo ganha cor no hover */
 }
 
-/* Grid de Produtos */
 #section-mizuno .mizuno-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 30px;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 25px;
     max-width: 1200px;
     margin: 0 auto;
 }
 
-/* Card do Produto */
 #section-mizuno .mizuno-card {
-    background: #fff;
-    border-radius: 8px;
+    background: var(--mizuno-fundo-card);
+    border: 1px solid #eee;
+    border-radius: 4px;
     overflow: hidden;
-    position: relative;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-    transition: transform 0.3s ease;
+    transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
 }
 
 #section-mizuno .mizuno-card:hover {
-    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+    transform: translateY(-8px);
 }
 
-#section-mizuno .mizuno-badge {
-    position: absolute;
-    top: 15px;
-    left: 15px;
-    background: #001e62;
-    color: white;
-    padding: 5px 12px;
-    font-size: 0.7rem;
-    font-weight: bold;
-    text-transform: uppercase;
+/* Container da Imagem com Zoom */
+#section-mizuno .mizuno-img-container {
+    overflow: hidden;
+    position: relative;
+    background: #fff;
 }
 
 #section-mizuno .mizuno-card img {
     width: 100%;
     height: auto;
-    display: block;
+    transition: transform 0.6s ease;
+}
+
+#section-mizuno .mizuno-card:hover img {
+    transform: scale(1.1);
 }
 
 #section-mizuno .mizuno-info {
-    padding: 20px;
-    text-align: center;
+    padding: 25px;
 }
 
 #section-mizuno .mizuno-info h3 {
-    font-size: 1.2rem;
-    margin-bottom: 10px;
-}
-
-#section-mizuno .mizuno-info p {
-    font-size: 0.9rem;
-    color: #666;
-    margin-bottom: 15px;
+    font-size: 1.1rem;
+    font-weight: 700;
+    margin-bottom: 8px;
+    text-transform: uppercase;
 }
 
 #section-mizuno .mizuno-price {
     display: block;
-    font-size: 1.3rem;
-    font-weight: bold;
-    color: #001e62;
-    margin-bottom: 20px;
+    font-size: 1.4rem;
+    color: var(--mizuno-principal);
+    font-weight: 800;
+    margin: 15px 0;
 }
 
-/* Botão */
 #section-mizuno .mizuno-btn {
-    display: inline-block;
-    background-color: #001e62;
+    display: block;
+    text-align: center;
+    background-color: var(--mizuno-principal);
     color: #fff;
-    padding: 12px 30px;
+    padding: 15px;
     text-decoration: none;
+    font-size: 0.9rem;
     font-weight: bold;
-    border-radius: 4px;
+    border-radius: 2px;
     transition: background 0.3s;
+    text-transform: uppercase;
 }
 
 #section-mizuno .mizuno-btn:hover {
-    background-color: #0033a0;
+    background-color: var(--mizuno-botao-hover);
 }
