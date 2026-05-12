@@ -3,211 +3,190 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Minha Loja Sport | Revendedor Nike</title>
+    <title>Nike Exclusive Store</title>
     <style>
-        /* CONFIGURAÇÕES GERAIS */
         :root {
-            --nike-black: #000;
-            --nike-orange: #ff6600;
-            --gray-light: #f5f5f5;
-            --text-color: #111;
+            --nike-black: #111;
+            --nike-white: #fff;
+            --nike-gray: #f5f5f5;
         }
 
         body {
             font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
             margin: 0;
-            background-color: var(--gray-light);
-            color: var(--text-color);
+            padding: 0;
+            background-color: var(--nike-white);
         }
 
-        /* CABEÇALHO */
-        header {
-            background-color: white;
-            padding: 15px 5%;
+        /* --- TELA DE CADASTRO (INICIAL) --- */
+        #tela-cadastro {
             display: flex;
-            justify-content: space-between;
+            justify-content: center;
             align-items: center;
-            border-bottom: 1px solid #ddd;
-            position: sticky;
-            top: 0;
-            z-index: 100;
-        }
-
-        .logo { font-weight: 900; font-size: 24px; letter-spacing: -1px; }
-
-        /* SEÇÃO DE CADASTRO */
-        .hero-cadastro {
+            height: 100vh;
             background-color: var(--nike-black);
             color: white;
-            padding: 50px 5%;
+        }
+
+        .cadastro-box {
+            background: white;
+            color: black;
+            padding: 40px;
+            border-radius: 4px;
+            width: 100%;
+            max-width: 400px;
             text-align: center;
         }
 
-        .form-cadastro {
-            display: flex;
-            justify-content: center;
-            gap: 10px;
-            flex-wrap: wrap;
-            margin-top: 20px;
-        }
+        .nike-logo-svg { width: 60px; margin-bottom: 20px; }
 
-        .form-cadastro input {
-            padding: 12px;
-            border-radius: 4px;
-            border: none;
-            width: 250px;
-        }
-
-        .btn-cadastrar {
-            background-color: white;
-            color: black;
-            border: none;
-            padding: 12px 30px;
-            font-weight: bold;
-            cursor: pointer;
-            border-radius: 4px;
-            transition: 0.3s;
-        }
-
-        .btn-cadastrar:hover { background-color: #ddd; }
-
-        /* VITRINE DE PRODUTOS */
-        .container { padding: 50px 5%; }
-        
-        .titulo-secao {
-            font-size: 28px;
-            margin-bottom: 30px;
-            text-transform: uppercase;
-        }
-
-        .grid-produtos {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 20px;
-        }
-
-        .card-produto {
-            background: white;
-            padding: 15px;
-            border-radius: 8px;
-            transition: 0.3s;
-            display: flex;
-            flex-direction: column;
-        }
-
-        .card-produto:hover { transform: translateY(-5px); box-shadow: 0 10px 20px rgba(0,0,0,0.1); }
-
-        .card-produto img {
+        input {
             width: 100%;
-            height: 250px;
-            object-fit: contain;
-            background: #f9f9f9;
-        }
-
-        .info-produto { padding: 15px 0; }
-        
-        .nome-produto { font-weight: bold; font-size: 18px; margin: 5px 0; }
-        
-        .categoria { color: #777; font-size: 14px; }
-
-        .preco {
-            font-size: 20px;
-            font-weight: 900;
+            padding: 15px;
             margin: 10px 0;
-            color: var(--nike-black);
+            border: 1px solid #ccc;
+            border-radius: 2px;
+            box-sizing: border-box;
         }
+
+        .btn-entrar {
+            width: 100%;
+            background: black;
+            color: white;
+            padding: 15px;
+            border: none;
+            font-weight: bold;
+            text-transform: uppercase;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+
+        /* --- SITE DE ROUPAS (ESCONDIDO INICIALMENTE) --- */
+        #site-principal {
+            display: none; /* Escondido até o cadastro ser feito */
+        }
+
+        header {
+            padding: 20px 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid #eee;
+        }
+
+        .vitrine {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+            padding: 40px 5%;
+        }
+
+        .card {
+            border: 1px solid transparent;
+            transition: 0.3s;
+            padding: 10px;
+        }
+
+        .card:hover { border: 1px solid #eee; }
+
+        .card img {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+            background: var(--nike-gray);
+        }
+
+        .card h3 { font-size: 16px; margin: 10px 0 5px; }
+        .card p { color: #757575; font-size: 14px; margin: 0; }
+        .card .preco { color: black; font-weight: bold; margin-top: 10px; font-size: 18px; }
 
         .btn-comprar {
-            background-color: var(--nike-black);
+            display: block;
+            background: black;
             color: white;
             text-align: center;
             padding: 12px;
             text-decoration: none;
+            margin-top: 15px;
+            font-size: 14px;
             font-weight: bold;
-            border-radius: 30px;
-            margin-top: auto;
-            transition: 0.3s;
-        }
-
-        .btn-comprar:hover { background-color: #333; }
-
-        footer {
-            background: white;
-            text-align: center;
-            padding: 30px;
-            border-top: 1px solid #ddd;
-            margin-top: 50px;
         }
     </style>
 </head>
 <body>
 
-    <header>
-        <div class="logo">MINHA LOJA SPORT</div>
-        <nav>Lançamentos | Masculino | Feminino | Ofertas</nav>
-    </header>
-
-    <section class="hero-cadastro">
-        <h2>JUNTE-SE AO TIME</h2>
-        <p>Cadastre-se para receber ofertas exclusivas da Nike em primeira mão.</p>
-        <form class="form-cadastro">
-            <input type="text" placeholder="Nome Completo" required>
-            <input type="email" placeholder="Seu melhor e-mail" required>
-            <button type="submit" class="btn-cadastrar">CADASTRAR</button>
-        </form>
-    </section>
-
-    <div class="container">
-        <h2 class="titulo-secao">Destaques Nike</h2>
-        
-        <div class="grid-produtos">
-            
-            <div class="card-produto">
-                <img src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=500" alt="Tênis Nike">
-                <div class="info-produto">
-                    <span class="categoria">Tênis Lifestyle</span>
-                    <p class="nome-produto">Nike Air Max Speed</p>
-                    <p class="preco">R$ 799,90</p>
-                </div>
-                <a href="#" class="btn-comprar">ADICIONAR AO CARRINHO</a>
-            </div>
-
-            <div class="card-produto">
-                <img src="https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?w=500" alt="Roupa Nike">
-                <div class="info-produto">
-                    <span class="categoria">Vestuário Masculino</span>
-                    <p class="nome-produto">Moletom Nike Sportswear</p>
-                    <p class="preco">R$ 349,90</p>
-                </div>
-                <a href="#" class="btn-comprar">ADICIONAR AO CARRINHO</a>
-            </div>
-
-            <div class="card-produto">
-                <img src="https://images.unsplash.com/photo-1606107557195-0e29a4b5b4aa?w=500" alt="Nike Zoom">
-                <div class="info-produto">
-                    <span class="categoria">Tênis de Corrida</span>
-                    <p class="nome-produto">Nike Zoom Pegasus 40</p>
-                    <p class="preco">R$ 899,00</p>
-                </div>
-                <a href="#" class="btn-comprar">ADICIONAR AO CARRINHO</a>
-            </div>
-
-            <div class="card-produto">
-                <img src="https://images.unsplash.com/photo-1511746015091-c6741748232c?w=500" alt="Shorts Nike">
-                <div class="info-produto">
-                    <span class="categoria">Treino</span>
-                    <p class="nome-produto">Shorts Nike Pro Dri-FIT</p>
-                    <p class="preco">R$ 189,90</p>
-                </div>
-                <a href="#" class="btn-comprar">ADICIONAR AO CARRINHO</a>
-            </div>
-
+    <div id="tela-cadastro">
+        <div class="cadastro-box">
+            <svg class="nike-logo-svg" viewBox="0 0 24 24"><path d="M21 7L7.5 15.5l-4.5-2V11l4.5 2L21 7z"></path></svg>
+            <h2>SUA CONTA PARA TUDO DA NIKE</h2>
+            <p>Cadastre-se para acessar produtos exclusivos.</p>
+            <form onsubmit="entrarNoSite(event)">
+                <input type="text" placeholder="Nome Completo" required>
+                <input type="email" placeholder="Endereço de e-mail" required>
+                <input type="password" placeholder="Senha" required>
+                <button type="submit" class="btn-entrar">Criar Conta</button>
+            </form>
         </div>
     </div>
 
-    <footer>
-        <p>&copy; 2024 Minha Loja Sport - Revendedor Autorizado</p>
-    </footer>
+    <div id="site-principal">
+        <header>
+            <div style="font-weight: bold; font-size: 24px;">NIKE STORE</div>
+            <nav>Masculino | Feminino | Infantil | Ofertas</nav>
+        </header>
+
+        <div style="padding: 20px 5%;">
+            <h1>Produtos em Destaque</h1>
+        </div>
+
+        <div class="vitrine">
+            <div class="card">
+                <img src="https://images.unsplash.com/photo-1605348532760-6753d2c43329?w=500" alt="Nike Jordan">
+                <h3>Air Jordan 1 Retro High</h3>
+                <p>Tênis Masculino</p>
+                <p class="preco">R$ 1.299,90</p>
+                <a href="#" class="btn-comprar">COMPRAR</a>
+            </div>
+
+            <div class="card">
+                <img src="https://images.unsplash.com/photo-1552346154-21d32810aba3?w=500" alt="Nike Hoodie">
+                <h3>Moletom Nike Sportswear</h3>
+                <p>Vestuário Unissex</p>
+                <p class="preco">R$ 399,90</p>
+                <a href="#" class="btn-comprar">COMPRAR</a>
+            </div>
+
+            <div class="card">
+                <img src="https://images.unsplash.com/photo-1595950653106-6c9ebd614d3a?w=500" alt="Nike Air Force">
+                <h3>Nike Air Force 1 '07</h3>
+                <p>Tênis Feminino</p>
+                <p class="preco">R$ 749,90</p>
+                <a href="#" class="btn-comprar">COMPRAR</a>
+            </div>
+
+            <div class="card">
+                <img src="https://images.unsplash.com/photo-1511746015091-c6741748232c?w=500" alt="Shorts">
+                <h3>Shorts Nike Dri-FIT</h3>
+                <p>Performance Treino</p>
+                <p class="preco">R$ 159,90</p>
+                <a href="#" class="btn-comprar">COMPRAR</a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function entrarNoSite(event) {
+            event.preventDefault(); // Impede a página de recarregar
+            
+            // Esconde a tela de cadastro
+            document.getElementById('tela-cadastro').style.display = 'none';
+            
+            // Mostra o site principal
+            document.getElementById('site-principal').style.display = 'block';
+            
+            window.scrollTo(0, 0); // Sobe para o topo do site
+        }
+    </script>
 
 </body>
 </html>
