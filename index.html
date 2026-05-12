@@ -3,203 +3,273 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Nike Exclusive | Sua Loja</title>
+    <title>Minha Loja - Seção Mizuno</title>
+
     <style>
+        /* ============================================================
+           VARIÁVEIS E ESTILO BASE (NÃO AFETA SEU SITE)
+           ============================================================ */
         :root {
-            --nike-black: #111;
-            --nike-white: #fff;
-            --nike-gray: #f5f5f5;
-            --accent: #ff6600;
+            --mizuno-blue: #001e62;
+            --mizuno-dark: #000b24;
+            --mizuno-white: #ffffff;
+            --mizuno-gray: #f4f4f4;
+            --mizuno-text: #333333;
         }
 
-        body, html {
-            margin: 0;
-            padding: 0;
-            height: 100%;
-            font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-            overflow-x: hidden;
-        }
-
-        /* --- TELA DE CADASTRO INICIAL (OVERLAY) --- */
-        #overlay-cadastro {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: var(--nike-black);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            z-index: 1000;
-            transition: transform 0.8s cubic-bezier(0.87, 0, 0.13, 1);
-        }
-
-        .cadastro-card {
-            background: white;
-            padding: 40px;
-            border-radius: 8px;
-            width: 90%;
-            max-width: 400px;
-            text-align: center;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.4);
-        }
-
-        .nike-logo { width: 70px; margin-bottom: 20px; }
-
-        .cadastro-card h2 {
-            font-size: 22px;
-            margin-bottom: 10px;
-            letter-spacing: -1px;
-        }
-
-        .cadastro-card input {
-            width: 100%;
-            padding: 15px;
-            margin: 10px 0;
-            border: 1px solid #ccc;
-            border-radius: 4px;
-            box-sizing: border-box;
-            font-size: 16px;
-        }
-
-        .btn-enviar {
-            width: 100%;
-            background: black;
+        /* Botão de exemplo para abrir o login (Você pode apagar se já tiver um) */
+        .btn-abrir-login-exemplo {
+            padding: 10px 20px;
+            background: var(--mizuno-blue);
             color: white;
-            padding: 15px;
             border: none;
-            font-weight: bold;
-            text-transform: uppercase;
             cursor: pointer;
-            margin-top: 15px;
-            letter-spacing: 1px;
+            margin: 20px;
+            border-radius: 5px;
+            font-family: sans-serif;
         }
 
-        .btn-enviar:hover { background: #333; }
-
-        /* --- SITE PRINCIPAL --- */
-        #conteudo-site {
-            opacity: 0;
-            transition: opacity 1s ease;
-            padding-top: 80px;
+        /* ============================================================
+           CSS DA SEÇÃO MIZUNO (ISOLADO)
+           ============================================================ */
+        #section-mizuno {
+            font-family: 'Arial', sans-serif;
+            background-color: var(--mizuno-gray);
+            padding: 60px 20px;
+            color: var(--mizuno-text);
         }
 
-        header {
-            position: fixed;
-            top: 0;
+        #section-mizuno .mizuno-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        #section-mizuno .mizuno-header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        #section-mizuno .mizuno-logo {
+            width: 130px;
+            margin-bottom: 15px;
+        }
+
+        #section-mizuno .mizuno-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+        }
+
+        #section-mizuno .mizuno-card {
+            background: var(--mizuno-white);
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            transition: transform 0.3s ease;
+            position: relative;
+        }
+
+        #section-mizuno .mizuno-card:hover {
+            transform: translateY(-10px);
+        }
+
+        #section-mizuno .mizuno-img-box {
+            overflow: hidden;
+            background: #fff;
+        }
+
+        #section-mizuno .mizuno-card img {
             width: 100%;
-            background: white;
-            padding: 20px 5%;
-            display: flex;
-            justify-content: space-between;
+            height: auto;
+            transition: transform 0.5s ease;
+        }
+
+        #section-mizuno .mizuno-card:hover img {
+            transform: scale(1.1);
+        }
+
+        #section-mizuno .mizuno-info {
+            padding: 20px;
+            text-align: center;
+        }
+
+        #section-mizuno .mizuno-price {
+            display: block;
+            font-size: 1.4rem;
+            font-weight: bold;
+            color: var(--mizuno-blue);
+            margin: 10px 0;
+        }
+
+        #section-mizuno .mizuno-btn {
+            display: block;
+            background: var(--mizuno-blue);
+            color: white;
+            text-decoration: none;
+            padding: 12px;
+            border-radius: 5px;
+            font-weight: bold;
+            transition: background 0.3s;
+        }
+
+        #section-mizuno .mizuno-btn:hover {
+            background: var(--mizuno-dark);
+        }
+
+        /* ============================================================
+           CSS DO MODAL DE LOGIN (ISOLADO)
+           ============================================================ */
+        #login-overlay {
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(8px);
+            display: none; /* Escondido por padrão */
             align-items: center;
-            border-bottom: 1px solid #eee;
-            z-index: 500;
+            justify-content: center;
+            z-index: 10000;
+        }
+
+        #login-overlay.active {
+            display: flex;
+        }
+
+        .login-card {
+            background: white;
+            width: 100%;
+            max-width: 400px;
+            padding: 40px;
+            border-radius: 15px;
+            position: relative;
+            animation: slideUp 0.4s ease;
+        }
+
+        @keyframes slideUp {
+            from { transform: translateY(50px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+
+        .login-close {
+            position: absolute;
+            top: 15px; right: 20px;
+            font-size: 24px;
+            cursor: pointer;
+            color: #666;
+            border: none; background: none;
+        }
+
+        .login-card h2 {
+            margin-bottom: 20px;
+            color: var(--mizuno-blue);
+            text-align: center;
+        }
+
+        .login-field {
+            margin-bottom: 15px;
+        }
+
+        .login-field label {
+            display: block;
+            margin-bottom: 5px;
+            font-size: 0.9rem;
+            font-weight: bold;
+        }
+
+        .login-field input {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 6px;
             box-sizing: border-box;
         }
 
-        .vitrine {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
-            padding: 40px 5%;
-        }
-
-        .produto {
-            background: white;
-            padding: 15px;
-            text-align: left;
-        }
-
-        .produto img {
+        .btn-login-submit {
             width: 100%;
-            height: 350px;
-            object-fit: cover;
-            background: var(--nike-gray);
-        }
-
-        .produto h3 { margin: 15px 0 5px; font-size: 18px; }
-        .produto .preco { font-weight: 900; font-size: 20px; margin: 10px 0; }
-
-        .btn-comprar {
-            display: inline-block;
-            background: black;
+            padding: 15px;
+            background: var(--mizuno-blue);
             color: white;
-            padding: 12px 25px;
-            text-decoration: none;
+            border: none;
+            border-radius: 6px;
             font-weight: bold;
-            border-radius: 30px;
-        }
-
-        /* Classe para esconder a tela de cadastro */
-        .esconder-cadastro {
-            transform: translateY(-100%);
+            cursor: pointer;
+            margin-top: 10px;
         }
     </style>
 </head>
 <body>
 
-    <div id="overlay-cadastro">
-        <div class="cadastro-card">
-            <svg class="nike-logo" viewBox="0 0 24 24"><path d="M21 7L7.5 15.5l-4.5-2V11l4.5 2L21 7z"></path></svg>
-            <h2>BEM-VINDO À NIKE</h2>
-            <p>Faça seu cadastro para liberar a loja exclusiva.</p>
-            
-            <form onsubmit="liberarSite(event)">
-                <input type="text" placeholder="Seu Nome" required>
-                <input type="email" placeholder="Seu melhor e-mail" required>
-                <input type="password" placeholder="Crie uma senha" required>
-                <button type="submit" class="btn-enviar">Criar Conta e Entrar</button>
-            </form>
+    <button class="btn-abrir-login-exemplo" onclick="toggleLogin()">Minha Conta / Login</button>
+
+    <section id="section-mizuno">
+        <div class="mizuno-container">
+            <div class="mizuno-header">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b1/Mizuno_logo.svg/2560px-Mizuno_logo.svg.png" alt="Mizuno" class="mizuno-logo">
+                <h2>Tecnologia em cada passo</h2>
+            </div>
+
+            <div class="mizuno-grid">
+                <div class="mizuno-card">
+                    <div class="mizuno-img-box">
+                        <img src="https://images.mizuno.com.br/1000x1000/providers/20d88562-b94d-4870-85f8-b39174092f3b/products/4149021/0088/tenis-mizuno-wave-prophecy-13-azul-marinho-0088-1.jpg" alt="Produto 1">
+                    </div>
+                    <div class="mizuno-info">
+                        <h3>Wave Prophecy 13</h3>
+                        <span class="mizuno-price">R$ 1.599,90</span>
+                        <a href="#" class="mizuno-btn">Ver Produto</a>
+                    </div>
+                </div>
+
+                <div class="mizuno-card">
+                    <div class="mizuno-img-box">
+                        <img src="https://images.mizuno.com.br/1000x1000/providers/20d88562-b94d-4870-85f8-b39174092f3b/products/4149250/0259/tenis-mizuno-wave-sky-7-cinza-0259-1.jpg" alt="Produto 2">
+                    </div>
+                    <div class="mizuno-info">
+                        <h3>Wave Sky 7</h3>
+                        <span class="mizuno-price">R$ 999,90</span>
+                        <a href="#" class="mizuno-btn">Ver Produto</a>
+                    </div>
+                </div>
+            </div>
         </div>
-    </div>
+    </section>
 
-    <div id="conteudo-site">
-        <header>
-            <div style="font-weight: 900; font-size: 24px;">NIKE CUSTOM STORE</div>
-            <nav style="font-weight: bold; font-size: 14px;">TÊNIS | ROUPAS | ACESSÓRIOS</nav>
-        </header>
-
-        <div class="vitrine">
-            <div class="produto">
-                <img src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=600" alt="Tenis">
-                <h3>Nike Air Max Sport</h3>
-                <p>Coleção Masculina Premium</p>
-                <div class="preco">R$ 699,90</div>
-                <a href="#" class="btn-comprar">Comprar Agora</a>
-            </div>
-
-            <div class="produto">
-                <img src="https://images.unsplash.com/photo-1552346154-21d32810aba3?w=600" alt="Moletom">
-                <h3>Moletom Nike Essential</h3>
-                <p>Estilo e Conforto</p>
-                <div class="preco">R$ 349,00</div>
-                <a href="#" class="btn-comprar">Comprar Agora</a>
-            </div>
-
-            <div class="produto">
-                <img src="https://images.unsplash.com/photo-1606107557195-0e29a4b5b4aa?w=600" alt="Tenis">
-                <h3>Nike Pegasus Run</h3>
-                <p>Alta Performance</p>
-                <div class="preco">R$ 529,90</div>
-                <a href="#" class="btn-comprar">Comprar Agora</a>
-            </div>
+    <div id="login-overlay">
+        <div class="login-card">
+            <button class="login-close" onclick="toggleLogin()">&times;</button>
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b1/Mizuno_logo.svg/2560px-Mizuno_logo.svg.png" alt="Mizuno" style="width: 80px; display: block; margin: 0 auto 20px;">
+            <h2>Acesse sua Conta</h2>
+            
+            <form action="#">
+                <div class="login-field">
+                    <label>E-mail</label>
+                    <input type="email" placeholder="Digite seu e-mail" required>
+                </div>
+                <div class="login-field">
+                    <label>Senha</label>
+                    <input type="password" placeholder="Digite sua senha" required>
+                </div>
+                <button type="submit" class="btn-login-submit">Entrar</button>
+            </form>
+            
+            <p style="text-align: center; font-size: 0.8rem; margin-top: 20px; color: #666;">
+                Ainda não tem conta? <a href="#" style="color: var(--mizuno-blue); font-weight: bold;">Cadastre-se</a>
+            </p>
         </div>
     </div>
 
     <script>
-        function liberarSite(event) {
-            event.preventDefault(); // Não deixa a página recarregar
-            
-            // Sobe a tela de cadastro para cima
-            document.getElementById('overlay-cadastro').classList.add('esconder-cadastro');
-            
-            // Mostra o site com efeito de transparência
-            document.getElementById('conteudo-site').style.opacity = '1';
-            
-            // Permite o scroll na página novamente
-            document.body.style.overflow = 'auto';
+        function toggleLogin() {
+            const login = document.getElementById('login-overlay');
+            login.classList.toggle('active');
+        }
+
+        // Fecha o login se clicar fora da caixa branca
+        window.onclick = function(event) {
+            const login = document.getElementById('login-overlay');
+            if (event.target == login) {
+                login.classList.remove('active');
+            }
         }
     </script>
 
