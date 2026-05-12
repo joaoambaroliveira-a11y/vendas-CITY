@@ -1,1 +1,106 @@
 joao
+/* Reset local para não interferir no seu site */
+#section-mizuno {
+    font-family: 'Inter', sans-serif;
+    background-color: #f4f4f4;
+    padding: 60px 20px;
+    color: #333;
+}
+
+#section-mizuno .mizuno-header {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+#section-mizuno .mizuno-logo {
+    width: 120px;
+    margin-bottom: 10px;
+}
+
+#section-mizuno h2 {
+    font-size: 1.5rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: #001e62; /* Azul Mizuno */
+}
+
+/* Grid de Produtos */
+#section-mizuno .mizuno-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* Card do Produto */
+#section-mizuno .mizuno-card {
+    background: #fff;
+    border-radius: 8px;
+    overflow: hidden;
+    position: relative;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease;
+}
+
+#section-mizuno .mizuno-card:hover {
+    transform: translateY(-5px);
+}
+
+#section-mizuno .mizuno-badge {
+    position: absolute;
+    top: 15px;
+    left: 15px;
+    background: #001e62;
+    color: white;
+    padding: 5px 12px;
+    font-size: 0.7rem;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+#section-mizuno .mizuno-card img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+#section-mizuno .mizuno-info {
+    padding: 20px;
+    text-align: center;
+}
+
+#section-mizuno .mizuno-info h3 {
+    font-size: 1.2rem;
+    margin-bottom: 10px;
+}
+
+#section-mizuno .mizuno-info p {
+    font-size: 0.9rem;
+    color: #666;
+    margin-bottom: 15px;
+}
+
+#section-mizuno .mizuno-price {
+    display: block;
+    font-size: 1.3rem;
+    font-weight: bold;
+    color: #001e62;
+    margin-bottom: 20px;
+}
+
+/* Botão */
+#section-mizuno .mizuno-btn {
+    display: inline-block;
+    background-color: #001e62;
+    color: #fff;
+    padding: 12px 30px;
+    text-decoration: none;
+    font-weight: bold;
+    border-radius: 4px;
+    transition: background 0.3s;
+}
+
+#section-mizuno .mizuno-btn:hover {
+    background-color: #0033a0;
+}
