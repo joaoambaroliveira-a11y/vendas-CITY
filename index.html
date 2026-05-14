@@ -3,17 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SportStore - Nike, Adidas & Mizuno</title>
+    <title>Premium Sports - Catálogo</title>
     <style>
         :root {
             --primary: #000;
-            --accent: #1a1a1a;
-            --bg: #f4f4f4;
+            --bg: #f8f9fa;
             --white: #ffffff;
+            --nike-color: #000;
+            --adidas-color: #0051ba;
+            --mizuno-color: #cc0000;
         }
 
         body {
-            font-family: 'Inter', sans-serif;
+            font-family: 'Segoe UI', sans-serif;
             background-color: var(--bg);
             margin: 0;
             display: flex;
@@ -22,26 +24,15 @@
             min-height: 100vh;
         }
 
-        /* --- TELA DE LOGIN --- */
+        /* --- LOGIN --- */
         #login-screen {
             background: var(--white);
             padding: 40px;
-            border-radius: 12px;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+            border-radius: 15px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.1);
             width: 100%;
             max-width: 350px;
             text-align: center;
-        }
-
-        .login-header h2 { margin-bottom: 20px; text-transform: uppercase; letter-spacing: 2px; }
-
-        input {
-            width: 100%;
-            padding: 12px;
-            margin: 10px 0;
-            border: 1px solid #ddd;
-            border-radius: 6px;
-            box-sizing: border-box;
         }
 
         .btn-login {
@@ -50,150 +41,116 @@
             background: var(--primary);
             color: white;
             border: none;
-            border-radius: 6px;
+            border-radius: 8px;
             cursor: pointer;
             font-weight: bold;
-            margin-top: 10px;
+            margin-top: 15px;
         }
 
-        /* --- TELA DA LOJA (Escondida inicialmente) --- */
+        input {
+            width: 100%;
+            padding: 12px;
+            margin: 8px 0;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            box-sizing: border-box;
+        }
+
+        /* --- LOJA --- */
         #shop-screen {
             display: none;
-            width: 90%;
-            max-width: 1200px;
-            padding: 20px;
-        }
-
-        .shop-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            border-bottom: 2px solid #000;
-            margin-bottom: 30px;
-            padding-bottom: 10px;
+            width: 95%;
+            max-width: 1100px;
+            padding: 40px 20px;
         }
 
         .grid-produtos {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 20px;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
         }
 
         .produto-card {
             background: white;
-            padding: 15px;
-            border-radius: 8px;
+            padding: 20px;
+            border-radius: 12px;
             text-align: center;
-            transition: transform 0.2s;
-            border: 1px solid #eee;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            transition: 0.3s;
         }
 
-        .produto-card:hover { transform: translateY(-5px); }
-
-        .tag-marca {
-            display: inline-block;
-            padding: 4px 10px;
-            border-radius: 4px;
-            font-size: 12px;
-            font-weight: bold;
-            color: white;
-            margin-bottom: 10px;
-        }
-
-        .nike { background: #000; }
-        .adidas { background: #0051ba; }
-        .mizuno { background: #cc0000; }
+        .produto-card:hover { transform: translateY(-10px); }
 
         .produto-img {
             width: 100%;
-            height: 180px;
-            background: #eee;
-            border-radius: 4px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 0.8rem;
-            color: #888;
+            height: 250px;
+            object-fit: cover; /* Faz a imagem preencher o espaço sem distorcer */
+            border-radius: 8px;
             margin-bottom: 15px;
         }
+
+        .tag {
+            padding: 5px 15px;
+            border-radius: 20px;
+            color: white;
+            font-size: 12px;
+            font-weight: bold;
+            display: inline-block;
+            margin-bottom: 10px;
+        }
+
+        .price { color: #2ecc71; font-weight: bold; font-size: 1.2rem; }
     </style>
 </head>
 <body>
 
     <div id="login-screen">
-        <div class="login-header">
-            <h2>Sport Store</h2>
-            <p>Acesse sua conta</p>
-        </div>
+        <h2>Sport Login</h2>
         <form id="loginForm">
-            <input type="email" placeholder="E-mail" required>
-            <input type="password" placeholder="Senha" required>
-            <button type="submit" class="btn-login">ENTRAR</button>
+            <input type="email" placeholder="Seu e-mail" required>
+            <input type="password" placeholder="Sua senha" required>
+            <button type="submit" class="btn-login">ACESSAR LOJA</button>
         </form>
     </div>
 
     <div id="shop-screen">
-        <div class="shop-header">
-            <h1>Catálogo Premium</h1>
-            <button onclick="location.reload()" style="padding: 5px 15px; cursor: pointer;">Sair</button>
-        </div>
-
+        <h1 style="text-align: center; margin-bottom: 40px;">Lançamentos 2026</h1>
+        
         <div class="grid-produtos">
+            
             <div class="produto-card">
-                <span class="tag-marca nike">NIKE</span>
-                <div class="produto-img">Imagem Tênis Nike</div>
-                <h3>Tênis Air Max</h3>
-                <p>R$ 899,90</p>
+                <span class="tag" style="background: var(--nike-color);">NIKE</span>
+                <img src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?q=80&w=1000" alt="Tênis Nike" class="produto-img">
+                <h3>Tênis Nike Air Max</h3>
+                <p>O clássico conforto com amortecimento a ar.</p>
+                <p class="price">R$ 799,00</p>
             </div>
 
             <div class="produto-card">
-                <span class="tag-marca nike">NIKE</span>
-                <div class="produto-img">Imagem Moletom Nike</div>
-                <h3>Moletom NSW</h3>
-                <p>R$ 349,90</p>
+                <span class="tag" style="background: var(--adidas-color);">ADIDAS</span>
+                <img src="https://images.unsplash.com/photo-1530008053241-f5134707636e?q=80&w=1000" alt="Blusa Adidas" class="produto-img">
+                <h3>Blusa Adidas Performance</h3>
+                <p>Tecnologia respirável para treinos intensos.</p>
+                <p class="price">R$ 249,90</p>
             </div>
 
             <div class="produto-card">
-                <span class="tag-marca adidas">ADIDAS</span>
-                <div class="produto-img">Imagem Tênis Adidas</div>
-                <h3>Tênis Ultraboost</h3>
-                <p>R$ 799,90</p>
+                <span class="tag" style="background: var(--mizuno-color);">MIZUNO</span>
+                <img src="https://images.unsplash.com/photo-1556821840-3a63f95609a7?q=80&w=1000" alt="Moletom Mizuno" class="produto-img">
+                <h3>Moletom Mizuno Softstyle</h3>
+                <p>Máximo conforto e proteção térmica.</p>
+                <p class="price">R$ 320,00</p>
             </div>
 
-            <div class="produto-card">
-                <span class="tag-marca adidas">ADIDAS</span>
-                <div class="produto-img">Imagem Blusa Adidas</div>
-                <h3>Blusa Originals</h3>
-                <p>R$ 259,90</p>
-            </div>
-
-            <div class="produto-card">
-                <span class="tag-marca mizuno">MIZUNO</span>
-                <div class="produto-img">Imagem Tênis Mizuno</div>
-                <h3>Tênis Wave Creation</h3>
-                <p>R$ 999,90</p>
-            </div>
-
-            <div class="produto-card">
-                <span class="tag-marca mizuno">MIZUNO</span>
-                <div class="produto-img">Imagem Moletom Mizuno</div>
-                <h3>Moletom Training</h3>
-                <p>R$ 299,90</p>
-            </div>
         </div>
     </div>
 
     <script>
         document.getElementById('loginForm').addEventListener('submit', function(e) {
-            e.preventDefault(); // Impede o envio real do formulário
-            
-            // Esconde o login e mostra a loja
+            e.preventDefault();
             document.getElementById('login-screen').style.display = 'none';
             document.getElementById('shop-screen').style.display = 'block';
-            
-            // Muda o fundo do body para a loja
             document.body.style.alignItems = 'flex-start';
-            document.body.style.paddingTop = '50px';
         });
     </script>
 </body>
