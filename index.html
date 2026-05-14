@@ -3,170 +3,150 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sport Store PRO</title>
+    <title>Sport Store - Checkout Final</title>
     <style>
         :root {
             --nike: #000; --adidas: #0051ba; --mizuno: #cc0000;
-            --bg: #f0f2f5; --white: #fff;
+            --bg: #f4f7f6; --white: #fff; --success: #27ae60;
         }
 
-        body { font-family: 'Inter', sans-serif; background: var(--bg); margin: 0; display: flex; flex-direction: column; align-items: center; }
+        body { font-family: 'Segoe UI', sans-serif; background: var(--bg); margin: 0; }
 
-        /* TELA LOGIN */
-        #login-screen { 
-            height: 100vh; display: flex; justify-content: center; align-items: center; width: 100%; 
-        }
-        .login-box { 
-            background: var(--white); padding: 40px; border-radius: 12px; box-shadow: 0 10px 30px rgba(0,0,0,0.1); text-align: center; width: 300px;
-        }
-
-        /* LAYOUT DA LOJA */
-        #shop-screen { display: none; width: 100%; max-width: 1200px; padding: 20px; box-sizing: border-box; }
+        /* TELAS */
+        .container { padding: 20px; max-width: 1100px; margin: auto; display: none; }
+        #login-screen { display: flex; height: 100vh; justify-content: center; align-items: center; }
         
-        .main-container { display: grid; grid-template-columns: 1fr 300px; gap: 20px; }
+        /* LOGIN CARD */
+        .login-box { background: white; padding: 40px; border-radius: 12px; box-shadow: 0 10px 25px rgba(0,0,0,0.1); text-align: center; width: 320px; }
+        input, select { width: 100%; padding: 12px; margin: 10px 0; border: 1px solid #ddd; border-radius: 6px; box-sizing: border-box; }
 
-        .grid-produtos { 
-            display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; 
-        }
+        /* LOJA E CARRINHO */
+        .main-shop { display: grid; grid-template-columns: 1fr 320px; gap: 20px; }
+        .grid-produtos { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 15px; }
+        .card { background: white; padding: 15px; border-radius: 10px; text-align: center; box-shadow: 0 2px 5px rgba(0,0,0,0.05); }
+        .card img { width: 100%; height: 180px; object-fit: cover; border-radius: 5px; }
+        
+        /* CHECKOUT */
+        #checkout-screen { text-align: center; }
+        .checkout-box { background: white; padding: 30px; border-radius: 12px; max-width: 500px; margin: auto; }
 
-        /* CARD PRODUTO */
-        .card { 
-            background: var(--white); border-radius: 10px; padding: 15px; text-align: center; 
-            box-shadow: 0 4px 6px rgba(0,0,0,0.05); transition: 0.3s; 
-        }
-        .card:hover { transform: translateY(-5px); }
-        .card img { width: 100%; height: 200px; object-fit: cover; border-radius: 8px; }
-        .tag { color: white; padding: 3px 10px; border-radius: 4px; font-size: 10px; font-weight: bold; }
-        .btn-add { 
-            width: 100%; padding: 10px; background: #27ae60; color: white; border: none; 
-            border-radius: 5px; cursor: pointer; font-weight: bold; margin-top: 10px;
-        }
-
-        /* CARRINHO */
-        .carrinho { 
-            background: var(--white); padding: 20px; border-radius: 10px; 
-            height: fit-content; position: sticky; top: 20px; box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-        }
-        .item-carrinho { 
-            display: flex; justify-content: space-between; font-size: 0.9rem; 
-            border-bottom: 1px solid #eee; padding: 8px 0; 
-        }
+        /* BOTÕES */
+        .btn { width: 100%; padding: 12px; border: none; border-radius: 6px; cursor: pointer; font-weight: bold; transition: 0.3s; }
+        .btn-dark { background: #000; color: white; }
+        .btn-success { background: var(--success); color: white; margin-top: 15px; }
+        
+        .carrinho-float { background: white; padding: 20px; border-radius: 10px; position: sticky; top: 20px; height: fit-content; }
+        .item-row { display: flex; justify-content: space-between; padding: 5px 0; border-bottom: 1px solid #eee; font-size: 0.9rem; }
     </style>
 </head>
 <body>
 
     <div id="login-screen">
         <div class="login-box">
-            <h2>SportStore</h2>
-            <input type="email" id="email" placeholder="E-mail" style="width:90%; padding:10px; margin:10px 0; border-radius:5px; border:1px solid #ddd;">
-            <input type="password" id="senha" placeholder="Senha" style="width:90%; padding:10px; margin:10px 0; border-radius:5px; border:1px solid #ddd;">
-            <button onclick="logar()" style="width:100%; padding:12px; background:#000; color:#fff; border:none; border-radius:5px; cursor:pointer;">ENTRAR</button>
+            <h2 style="letter-spacing: 2px;">SPORT STORE</h2>
+            <input type="text" placeholder="Usuário">
+            <input type="password" placeholder="Senha">
+            <button class="btn btn-dark" onclick="irParaLoja()">ENTRAR</button>
         </div>
     </div>
 
-    <div id="shop-screen">
-        <header style="display:flex; justify-content:space-between; align-items:center; margin-bottom:30px;">
-            <h1>Outlet Premium</h1>
-            <button onclick="location.reload()" style="background:none; border:1px solid #000; padding:5px 15px; border-radius:5px; cursor:pointer;">Sair</button>
+    <div id="shop-screen" class="container">
+        <header style="display:flex; justify-content:space-between; align-items:center; margin-bottom:20px;">
+            <h1>Produtos Premium</h1>
+            <span id="user-info">Bem-vindo, Atleta!</span>
         </header>
 
-        <div class="main-container">
+        <div class="main-shop">
             <div class="grid-produtos">
-                
                 <div class="card">
-                    <span class="tag" style="background: var(--nike)">NIKE</span>
                     <img src="https://images.unsplash.com/photo-1542291026-7eec264c27ff" alt="Nike">
-                    <h3>Air Max Red</h3>
-                    <p>R$ 799.90</p>
-                    <button class="btn-add" onclick="addCarrinho('Air Max Red', 799.90)">Adicionar</button>
+                    <h4>Nike Air Sport</h4>
+                    <p>R$ 599.00</p>
+                    <button class="btn btn-dark" onclick="add('Nike Air Sport', 599)">Adicionar</button>
                 </div>
-
                 <div class="card">
-                    <span class="tag" style="background: var(--nike)">NIKE</span>
-                    <img src="https://images.unsplash.com/photo-1606107557195-0e29a4b5b4aa" alt="Nike">
-                    <h3>Nike Zoom Blue</h3>
-                    <p>R$ 650.00</p>
-                    <button class="btn-add" onclick="addCarrinho('Nike Zoom Blue', 650.00)">Adicionar</button>
-                </div>
-
-                <div class="card">
-                    <span class="tag" style="background: var(--adidas)">ADIDAS</span>
                     <img src="https://images.unsplash.com/photo-1518002171953-a080ee817e1f" alt="Adidas">
-                    <h3>Blusa Originals</h3>
-                    <p>R$ 289.90</p>
-                    <button class="btn-add" onclick="addCarrinho('Blusa Originals', 289.90)">Adicionar</button>
+                    <h4>Blusa Adidas 3S</h4>
+                    <p>R$ 249.00</p>
+                    <button class="btn btn-dark" onclick="add('Blusa Adidas 3S', 249)">Adicionar</button>
                 </div>
-
                 <div class="card">
-                    <span class="tag" style="background: var(--adidas)">ADIDAS</span>
-                    <img src="https://images.unsplash.com/photo-1523381210434-271e8be1f52b" alt="Adidas">
-                    <h3>Camiseta 3-Stripes</h3>
-                    <p>R$ 159.00</p>
-                    <button class="btn-add" onclick="addCarrinho('Camiseta 3-Stripes', 159.00)">Adicionar</button>
-                </div>
-
-                <div class="card">
-                    <span class="tag" style="background: var(--mizuno)">MIZUNO</span>
                     <img src="https://images.unsplash.com/photo-1556821840-3a63f95609a7" alt="Mizuno">
-                    <h3>Moletom Training</h3>
-                    <p>R$ 320.00</p>
-                    <button class="btn-add" onclick="addCarrinho('Moletom Training', 320.00)">Adicionar</button>
-                </div>
-
-                <div class="card">
-                    <span class="tag" style="background: var(--mizuno)">MIZUNO</span>
-                    <img src="https://images.unsplash.com/photo-1595950653106-6c9ebd614d3a" alt="Mizuno">
-                    <h3>Tênis Wave Sky</h3>
-                    <p>R$ 899.00</p>
-                    <button class="btn-add" onclick="addCarrinho('Tênis Wave Sky', 899.00)">Adicionar</button>
+                    <h4>Moletom Mizuno Pro</h4>
+                    <p>R$ 380.00</p>
+                    <button class="btn btn-dark" onclick="add('Moletom Mizuno Pro', 380)">Adicionar</button>
                 </div>
             </div>
 
-            <aside class="carrinho">
-                <h3>Meu Carrinho 🛒</h3>
-                <div id="itens-lista">
-                    <p style="color:#888; font-size: 0.8rem;">Carrinho vazio...</p>
-                </div>
+            <div class="carrinho-float">
+                <h3>Carrinho 🛒</h3>
+                <div id="lista-carrinho"></div>
                 <hr>
-                <div style="display:flex; justify-content:space-between; font-weight:bold;">
-                    <span>Total:</span>
-                    <span id="total-carrinho">R$ 0,00</span>
-                </div>
-                <button style="width:100%; margin-top:15px; padding:10px; background:#000; color:#fff; border:none; border-radius:5px; cursor:pointer;">Finalizar Compra</button>
-            </aside>
+                <p><strong>Total: R$ <span id="total-valor">0</span></strong></p>
+                <button class="btn btn-success" onclick="irParaCheckout()">Finalizar Compra</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="checkout-screen" class="container">
+        <div class="checkout-box">
+            <h2>Finalizar Pedido</h2>
+            <div id="resumo-final" style="text-align: left; margin: 20px 0;"></div>
+            <hr>
+            <label>Forma de Pagamento:</label>
+            <select id="pagamento">
+                <option>Cartão de Crédito (12x)</option>
+                <option>Pix (5% de desconto)</option>
+                <option>Boleto Bancário</option>
+            </select>
+            <button class="btn btn-success" onclick="confirmarCompra()">CONFIRMAR PAGAMENTO</button>
+            <button class="btn" style="background: #ccc; margin-top: 10px;" onclick="irParaLoja()">Voltar</button>
+        </div>
+    </div>
+
+    <div id="success-screen" class="container" style="text-align: center;">
+        <div class="checkout-box">
+            <h1 style="color: var(--success);">✔</h1>
+            <h2>Compra Realizada!</h2>
+            <p>O seu pedido já está sendo preparado para envio.</p>
+            <button class="btn btn-dark" onclick="location.reload()">Voltar ao Início</button>
         </div>
     </div>
 
     <script>
-        let carrinhoItens = [];
+        let itens = [];
         let total = 0;
 
-        function logar() {
-            document.getElementById('login-screen').style.display = 'none';
-            document.getElementById('shop-screen').style.display = 'block';
+        function mudarTela(id) {
+            document.querySelectorAll('.container, #login-screen').forEach(t => t.style.display = 'none');
+            document.getElementById(id).style.display = id === 'login-screen' ? 'flex' : 'block';
         }
 
-        function addCarrinho(nome, preco) {
-            carrinhoItens.push({nome, preco});
+        function irParaLoja() { mudarTela('shop-screen'); }
+
+        function add(nome, preco) {
+            itens.push({nome, preco});
             total += preco;
             atualizarCarrinho();
         }
 
         function atualizarCarrinho() {
-            const lista = document.getElementById('itens-lista');
-            const totalTexto = document.getElementById('total-carrinho');
-            
-            lista.innerHTML = "";
-            carrinhoItens.forEach((item) => {
-                lista.innerHTML += `
-                    <div class="item-carrinho">
-                        <span>${item.nome}</span>
-                        <span>R$ ${item.preco.toFixed(2)}</span>
-                    </div>
-                `;
-            });
+            const lista = document.getElementById('lista-carrinho');
+            lista.innerHTML = itens.map(i => `<div class="item-row"><span>${i.nome}</span><span>R$ ${i.preco}</span></div>`).join('');
+            document.getElementById('total-valor').innerText = total;
+        }
 
-            totalTexto.innerText = `R$ ${total.toFixed(2)}`;
+        function irParaCheckout() {
+            if(itens.length === 0) return alert("Seu carrinho está vazio!");
+            mudarTela('checkout-screen');
+            const resumo = document.getElementById('resumo-final');
+            resumo.innerHTML = `<h4>Seu Resumo:</h4>` + 
+                itens.map(i => `<small>${i.nome} - R$ ${i.preco}</small><br>`).join('') +
+                `<br><strong>Total a pagar: R$ ${total}</strong>`;
+        }
+
+        function confirmarCompra() {
+            mudarTela('success-screen');
         }
     </script>
 </body>
