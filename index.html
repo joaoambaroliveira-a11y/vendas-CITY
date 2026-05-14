@@ -3,107 +3,198 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tela de Cadastro</title>
+    <title>SportStore - Nike, Adidas & Mizuno</title>
     <style>
+        :root {
+            --primary: #000;
+            --accent: #1a1a1a;
+            --bg: #f4f4f4;
+            --white: #ffffff;
+        }
+
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: #f0f2f5;
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg);
+            margin: 0;
             display: flex;
             justify-content: center;
             align-items: center;
-            height: 100vh;
-            margin: 0;
+            min-height: 100vh;
         }
 
-        .card-cadastro {
-            background-color: white;
-            padding: 2rem;
-            border-radius: 8px;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        /* --- TELA DE LOGIN --- */
+        #login-screen {
+            background: var(--white);
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
             width: 100%;
-            max-width: 400px;
-        }
-
-        .card-cadastro h2 {
-            margin-top: 0;
-            color: #1c1e21;
+            max-width: 350px;
             text-align: center;
         }
 
-        .form-group {
-            margin-bottom: 1rem;
-        }
+        .login-header h2 { margin-bottom: 20px; text-transform: uppercase; letter-spacing: 2px; }
 
-        .form-group label {
-            display: block;
-            margin-bottom: 0.5rem;
-            color: #4b4f56;
-        }
-
-        .form-group input {
+        input {
             width: 100%;
-            padding: 0.75rem;
-            border: 1px solid #dddfe2;
+            padding: 12px;
+            margin: 10px 0;
+            border: 1px solid #ddd;
             border-radius: 6px;
-            box-sizing: border-box; /* Garante que o padding não estoure a largura */
+            box-sizing: border-box;
         }
 
-        .btn-cadastrar {
+        .btn-login {
             width: 100%;
-            padding: 0.75rem;
-            background-color: #007bff;
+            padding: 12px;
+            background: var(--primary);
+            color: white;
             border: none;
             border-radius: 6px;
-            color: white;
-            font-size: 1rem;
-            font-weight: bold;
             cursor: pointer;
-            transition: background-color 0.3s;
+            font-weight: bold;
+            margin-top: 10px;
         }
 
-        .btn-cadastrar:hover {
-            background-color: #0056b3;
+        /* --- TELA DA LOJA (Escondida inicialmente) --- */
+        #shop-screen {
+            display: none;
+            width: 90%;
+            max-width: 1200px;
+            padding: 20px;
         }
 
-        .footer-link {
+        .shop-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 2px solid #000;
+            margin-bottom: 30px;
+            padding-bottom: 10px;
+        }
+
+        .grid-produtos {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+
+        .produto-card {
+            background: white;
+            padding: 15px;
+            border-radius: 8px;
             text-align: center;
-            margin-top: 1rem;
-            font-size: 0.9rem;
+            transition: transform 0.2s;
+            border: 1px solid #eee;
         }
 
-        .footer-link a {
-            color: #007bff;
-            text-decoration: none;
+        .produto-card:hover { transform: translateY(-5px); }
+
+        .tag-marca {
+            display: inline-block;
+            padding: 4px 10px;
+            border-radius: 4px;
+            font-size: 12px;
+            font-weight: bold;
+            color: white;
+            margin-bottom: 10px;
+        }
+
+        .nike { background: #000; }
+        .adidas { background: #0051ba; }
+        .mizuno { background: #cc0000; }
+
+        .produto-img {
+            width: 100%;
+            height: 180px;
+            background: #eee;
+            border-radius: 4px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.8rem;
+            color: #888;
+            margin-bottom: 15px;
         }
     </style>
 </head>
 <body>
 
-    <div class="card-cadastro">
-        <h2>Criar Conta</h2>
-        <form action="#">
-            <div class="form-group">
-                <label for="nome">Nome Completo</label>
-                <input type="text" id="nome" placeholder="Ex: João Silva" required>
-            </div>
-
-            <div class="form-group">
-                <label for="email">E-mail</label>
-                <input type="email" id="email" placeholder="seu@email.com" required>
-            </div>
-
-            <div class="form-group">
-                <label for="senha">Senha</label>
-                <input type="password" id="senha" placeholder="Mínimo 8 caracteres" required>
-            </div>
-
-            <button type="submit" class="btn-cadastrar">Cadastrar</button>
+    <div id="login-screen">
+        <div class="login-header">
+            <h2>Sport Store</h2>
+            <p>Acesse sua conta</p>
+        </div>
+        <form id="loginForm">
+            <input type="email" placeholder="E-mail" required>
+            <input type="password" placeholder="Senha" required>
+            <button type="submit" class="btn-login">ENTRAR</button>
         </form>
+    </div>
 
-        <div class="footer-link">
-            Já tem uma conta? <a href="#">Faça login</a>
+    <div id="shop-screen">
+        <div class="shop-header">
+            <h1>Catálogo Premium</h1>
+            <button onclick="location.reload()" style="padding: 5px 15px; cursor: pointer;">Sair</button>
+        </div>
+
+        <div class="grid-produtos">
+            <div class="produto-card">
+                <span class="tag-marca nike">NIKE</span>
+                <div class="produto-img">Imagem Tênis Nike</div>
+                <h3>Tênis Air Max</h3>
+                <p>R$ 899,90</p>
+            </div>
+
+            <div class="produto-card">
+                <span class="tag-marca nike">NIKE</span>
+                <div class="produto-img">Imagem Moletom Nike</div>
+                <h3>Moletom NSW</h3>
+                <p>R$ 349,90</p>
+            </div>
+
+            <div class="produto-card">
+                <span class="tag-marca adidas">ADIDAS</span>
+                <div class="produto-img">Imagem Tênis Adidas</div>
+                <h3>Tênis Ultraboost</h3>
+                <p>R$ 799,90</p>
+            </div>
+
+            <div class="produto-card">
+                <span class="tag-marca adidas">ADIDAS</span>
+                <div class="produto-img">Imagem Blusa Adidas</div>
+                <h3>Blusa Originals</h3>
+                <p>R$ 259,90</p>
+            </div>
+
+            <div class="produto-card">
+                <span class="tag-marca mizuno">MIZUNO</span>
+                <div class="produto-img">Imagem Tênis Mizuno</div>
+                <h3>Tênis Wave Creation</h3>
+                <p>R$ 999,90</p>
+            </div>
+
+            <div class="produto-card">
+                <span class="tag-marca mizuno">MIZUNO</span>
+                <div class="produto-img">Imagem Moletom Mizuno</div>
+                <h3>Moletom Training</h3>
+                <p>R$ 299,90</p>
+            </div>
         </div>
     </div>
 
+    <script>
+        document.getElementById('loginForm').addEventListener('submit', function(e) {
+            e.preventDefault(); // Impede o envio real do formulário
+            
+            // Esconde o login e mostra a loja
+            document.getElementById('login-screen').style.display = 'none';
+            document.getElementById('shop-screen').style.display = 'block';
+            
+            // Muda o fundo do body para a loja
+            document.body.style.alignItems = 'flex-start';
+            document.body.style.paddingTop = '50px';
+        });
+    </script>
 </body>
 </html>
