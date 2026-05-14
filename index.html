@@ -1,32 +1,66 @@
-<div class="produto-card">
-    <span class="tag" style="background: #0051ba;">ADIDAS</span>
-    <img src="https://images.unsplash.com/photo-1518002171953-a080ee817e1f?q=80&w=1000" alt="Blusa Adidas" class="produto-img">
-    <h3>Blusa Adidas Trefoil</h3>
-    <p>O estilo clássico das três listras com tecido de alta durabilidade.</p>
-    <p class="price">R$ 289,90</p>
-    <button style="width: 100%; padding: 10px; background: #000; color: #fff; border: none; border-radius: 5px; cursor: pointer;">
-        Adicionar ao Carrinho
-    </button>
-</div>
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nike Clone - Login</title>
+    <style>
+        /* Estilos básicos para limpar a página */
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #ffffff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+        
+        .container {
+            width: 100%;
+            max-width: 400px;
+            padding: 20px;
+        }
 
-<div class="produto-card">
-    <span class="tag" style="background: #000;">NIKE</span>
-    <img src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?q=80&w=1000" alt="Tênis Nike" class="produto-img">
-    <h3>Nike Air Max 270</h3>
-    <p>Amortecimento premium para o dia a dia.</p>
-    <p class="price">R$ 899,00</p>
-    <button style="width: 100%; padding: 10px; background: #000; color: #fff; border: none; border-radius: 5px; cursor: pointer;">
-        Adicionar ao Carrinho
-    </button>
-</div>
+        input:focus {
+            outline: none;
+            border-color: #111 !important;
+        }
 
-<div class="produto-card">
-    <span class="tag" style="background: #cc0000;">MIZUNO</span>
-    <img src="https://images.unsplash.com/photo-1556821840-3a63f95609a7?q=80&w=1000" alt="Moletom Mizuno" class="produto-img">
-    <h3>Moletom Mizuno Run</h3>
-    <p>Tecnologia térmica para manter a temperatura do corpo.</p>
-    <p class="price">R$ 315,00</p>
-    <button style="width: 100%; padding: 10px; background: #000; color: #fff; border: none; border-radius: 5px; cursor: pointer;">
-        Adicionar ao Carrinho
-    </button>
-</div>
+        button:hover {
+            opacity: 0.8;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <div style="text-align: center; margin-bottom: 25px;">
+            <svg height="60" width="60" viewBox="0 0 24 24">
+                <path d="M21 8.719L7.836 14.303C6.74 14.768 5.818 15 5.075 15c-.836 0-1.445-.295-1.819-.884-.485-.76-.273-1.982.559-3.272.494-.754 1.122-1.446 1.734-2.108-.144.234-1.415 2.349-.025 3.345.275.2.666.298 1.147.298.386 0 .829-.063 1.316-.19L21 8.719z"></path>
+            </svg>
+            <h2 style="font-family: 'Helvetica Neue', sans-serif; font-size: 24px; font-weight: bold; margin-top: 10px; line-height: 1.2;">
+                SUA CONTA PARA TUDO NA NIKE
+            </h2>
+        </div>
+
+        <form style="display: flex; flex-direction: column; gap: 15px; font-family: 'Helvetica Neue', sans-serif;">
+            <input type="email" placeholder="Endereço de e-mail" style="padding: 15px; border: 1px solid #e5e5e5; border-radius: 4px; font-size: 16px;">
+            <input type="password" placeholder="Senha" style="padding: 15px; border: 1px solid #e5e5e5; border-radius: 4px; font-size: 16px;">
+            
+            <p style="font-size: 12px; color: #8d8d8d; text-align: center; line-height: 1.5;">
+                Ao fazer login, você concorda com a <u>Política de Privacidade</u> e os <u>Termos de Uso</u> da Nike.
+            </p>
+
+            <button type="submit" style="background: black; color: white; padding: 15px; border: none; border-radius: 4px; font-weight: bold; cursor: pointer; text-transform: uppercase; font-size: 15px;">
+                Entrar
+            </button>
+
+            <p style="text-align: center; font-size: 14px;">
+                Não é um membro? <a href="#" style="color: black; font-weight: bold; text-decoration: underline;">Junte-se a nós.</a>
+            </p>
+        </form>
+    </div>
+
+</body>
+</html>
