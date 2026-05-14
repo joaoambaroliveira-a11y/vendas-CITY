@@ -1,157 +1,32 @@
-<!DOCTYPE html>
-<html lang="pt-br">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Premium Sports - Catálogo</title>
-    <style>
-        :root {
-            --primary: #000;
-            --bg: #f8f9fa;
-            --white: #ffffff;
-            --nike-color: #000;
-            --adidas-color: #0051ba;
-            --mizuno-color: #cc0000;
-        }
+<div class="produto-card">
+    <span class="tag" style="background: #0051ba;">ADIDAS</span>
+    <img src="https://images.unsplash.com/photo-1518002171953-a080ee817e1f?q=80&w=1000" alt="Blusa Adidas" class="produto-img">
+    <h3>Blusa Adidas Trefoil</h3>
+    <p>O estilo clássico das três listras com tecido de alta durabilidade.</p>
+    <p class="price">R$ 289,90</p>
+    <button style="width: 100%; padding: 10px; background: #000; color: #fff; border: none; border-radius: 5px; cursor: pointer;">
+        Adicionar ao Carrinho
+    </button>
+</div>
 
-        body {
-            font-family: 'Segoe UI', sans-serif;
-            background-color: var(--bg);
-            margin: 0;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh;
-        }
+<div class="produto-card">
+    <span class="tag" style="background: #000;">NIKE</span>
+    <img src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?q=80&w=1000" alt="Tênis Nike" class="produto-img">
+    <h3>Nike Air Max 270</h3>
+    <p>Amortecimento premium para o dia a dia.</p>
+    <p class="price">R$ 899,00</p>
+    <button style="width: 100%; padding: 10px; background: #000; color: #fff; border: none; border-radius: 5px; cursor: pointer;">
+        Adicionar ao Carrinho
+    </button>
+</div>
 
-        /* --- LOGIN --- */
-        #login-screen {
-            background: var(--white);
-            padding: 40px;
-            border-radius: 15px;
-            box-shadow: 0 15px 35px rgba(0,0,0,0.1);
-            width: 100%;
-            max-width: 350px;
-            text-align: center;
-        }
-
-        .btn-login {
-            width: 100%;
-            padding: 12px;
-            background: var(--primary);
-            color: white;
-            border: none;
-            border-radius: 8px;
-            cursor: pointer;
-            font-weight: bold;
-            margin-top: 15px;
-        }
-
-        input {
-            width: 100%;
-            padding: 12px;
-            margin: 8px 0;
-            border: 1px solid #ddd;
-            border-radius: 8px;
-            box-sizing: border-box;
-        }
-
-        /* --- LOJA --- */
-        #shop-screen {
-            display: none;
-            width: 95%;
-            max-width: 1100px;
-            padding: 40px 20px;
-        }
-
-        .grid-produtos {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
-        }
-
-        .produto-card {
-            background: white;
-            padding: 20px;
-            border-radius: 12px;
-            text-align: center;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
-            transition: 0.3s;
-        }
-
-        .produto-card:hover { transform: translateY(-10px); }
-
-        .produto-img {
-            width: 100%;
-            height: 250px;
-            object-fit: cover; /* Faz a imagem preencher o espaço sem distorcer */
-            border-radius: 8px;
-            margin-bottom: 15px;
-        }
-
-        .tag {
-            padding: 5px 15px;
-            border-radius: 20px;
-            color: white;
-            font-size: 12px;
-            font-weight: bold;
-            display: inline-block;
-            margin-bottom: 10px;
-        }
-
-        .price { color: #2ecc71; font-weight: bold; font-size: 1.2rem; }
-    </style>
-</head>
-<body>
-
-    <div id="login-screen">
-        <h2>Sport Login</h2>
-        <form id="loginForm">
-            <input type="email" placeholder="Seu e-mail" required>
-            <input type="password" placeholder="Sua senha" required>
-            <button type="submit" class="btn-login">ACESSAR LOJA</button>
-        </form>
-    </div>
-
-    <div id="shop-screen">
-        <h1 style="text-align: center; margin-bottom: 40px;">Lançamentos 2026</h1>
-        
-        <div class="grid-produtos">
-            
-            <div class="produto-card">
-                <span class="tag" style="background: var(--nike-color);">NIKE</span>
-                <img src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?q=80&w=1000" alt="Tênis Nike" class="produto-img">
-                <h3>Tênis Nike Air Max</h3>
-                <p>O clássico conforto com amortecimento a ar.</p>
-                <p class="price">R$ 799,00</p>
-            </div>
-
-            <div class="produto-card">
-                <span class="tag" style="background: var(--adidas-color);">ADIDAS</span>
-                <img src="https://images.unsplash.com/photo-1530008053241-f5134707636e?q=80&w=1000" alt="Blusa Adidas" class="produto-img">
-                <h3>Blusa Adidas Performance</h3>
-                <p>Tecnologia respirável para treinos intensos.</p>
-                <p class="price">R$ 249,90</p>
-            </div>
-
-            <div class="produto-card">
-                <span class="tag" style="background: var(--mizuno-color);">MIZUNO</span>
-                <img src="https://images.unsplash.com/photo-1556821840-3a63f95609a7?q=80&w=1000" alt="Moletom Mizuno" class="produto-img">
-                <h3>Moletom Mizuno Softstyle</h3>
-                <p>Máximo conforto e proteção térmica.</p>
-                <p class="price">R$ 320,00</p>
-            </div>
-
-        </div>
-    </div>
-
-    <script>
-        document.getElementById('loginForm').addEventListener('submit', function(e) {
-            e.preventDefault();
-            document.getElementById('login-screen').style.display = 'none';
-            document.getElementById('shop-screen').style.display = 'block';
-            document.body.style.alignItems = 'flex-start';
-        });
-    </script>
-</body>
-</html>
+<div class="produto-card">
+    <span class="tag" style="background: #cc0000;">MIZUNO</span>
+    <img src="https://images.unsplash.com/photo-1556821840-3a63f95609a7?q=80&w=1000" alt="Moletom Mizuno" class="produto-img">
+    <h3>Moletom Mizuno Run</h3>
+    <p>Tecnologia térmica para manter a temperatura do corpo.</p>
+    <p class="price">R$ 315,00</p>
+    <button style="width: 100%; padding: 10px; background: #000; color: #fff; border: none; border-radius: 5px; cursor: pointer;">
+        Adicionar ao Carrinho
+    </button>
+</div>
