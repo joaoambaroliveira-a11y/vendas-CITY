@@ -3,275 +3,107 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Minha Loja - Seção Mizuno</title>
-
+    <title>Tela de Cadastro</title>
     <style>
-        /* ============================================================
-           VARIÁVEIS E ESTILO BASE (NÃO AFETA SEU SITE)
-           ============================================================ */
-        :root {
-            --mizuno-blue: #001e62;
-            --mizuno-dark: #000b24;
-            --mizuno-white: #ffffff;
-            --mizuno-gray: #f4f4f4;
-            --mizuno-text: #333333;
-        }
-
-        /* Botão de exemplo para abrir o login (Você pode apagar se já tiver um) */
-        .btn-abrir-login-exemplo {
-            padding: 10px 20px;
-            background: var(--mizuno-blue);
-            color: white;
-            border: none;
-            cursor: pointer;
-            margin: 20px;
-            border-radius: 5px;
-            font-family: sans-serif;
-        }
-
-        /* ============================================================
-           CSS DA SEÇÃO MIZUNO (ISOLADO)
-           ============================================================ */
-        #section-mizuno {
-            font-family: 'Arial', sans-serif;
-            background-color: var(--mizuno-gray);
-            padding: 60px 20px;
-            color: var(--mizuno-text);
-        }
-
-        #section-mizuno .mizuno-container {
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        #section-mizuno .mizuno-header {
-            text-align: center;
-            margin-bottom: 40px;
-        }
-
-        #section-mizuno .mizuno-logo {
-            width: 130px;
-            margin-bottom: 15px;
-        }
-
-        #section-mizuno .mizuno-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 25px;
-        }
-
-        #section-mizuno .mizuno-card {
-            background: var(--mizuno-white);
-            border-radius: 10px;
-            overflow: hidden;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
-            transition: transform 0.3s ease;
-            position: relative;
-        }
-
-        #section-mizuno .mizuno-card:hover {
-            transform: translateY(-10px);
-        }
-
-        #section-mizuno .mizuno-img-box {
-            overflow: hidden;
-            background: #fff;
-        }
-
-        #section-mizuno .mizuno-card img {
-            width: 100%;
-            height: auto;
-            transition: transform 0.5s ease;
-        }
-
-        #section-mizuno .mizuno-card:hover img {
-            transform: scale(1.1);
-        }
-
-        #section-mizuno .mizuno-info {
-            padding: 20px;
-            text-align: center;
-        }
-
-        #section-mizuno .mizuno-price {
-            display: block;
-            font-size: 1.4rem;
-            font-weight: bold;
-            color: var(--mizuno-blue);
-            margin: 10px 0;
-        }
-
-        #section-mizuno .mizuno-btn {
-            display: block;
-            background: var(--mizuno-blue);
-            color: white;
-            text-decoration: none;
-            padding: 12px;
-            border-radius: 5px;
-            font-weight: bold;
-            transition: background 0.3s;
-        }
-
-        #section-mizuno .mizuno-btn:hover {
-            background: var(--mizuno-dark);
-        }
-
-        /* ============================================================
-           CSS DO MODAL DE LOGIN (ISOLADO)
-           ============================================================ */
-        #login-overlay {
-            position: fixed;
-            top: 0; left: 0;
-            width: 100%; height: 100%;
-            background: rgba(0, 0, 0, 0.8);
-            backdrop-filter: blur(8px);
-            display: none; /* Escondido por padrão */
-            align-items: center;
-            justify-content: center;
-            z-index: 10000;
-        }
-
-        #login-overlay.active {
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f0f2f5;
             display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
         }
 
-        .login-card {
-            background: white;
+        .card-cadastro {
+            background-color: white;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
             width: 100%;
             max-width: 400px;
-            padding: 40px;
-            border-radius: 15px;
-            position: relative;
-            animation: slideUp 0.4s ease;
         }
 
-        @keyframes slideUp {
-            from { transform: translateY(50px); opacity: 0; }
-            to { transform: translateY(0); opacity: 1; }
-        }
-
-        .login-close {
-            position: absolute;
-            top: 15px; right: 20px;
-            font-size: 24px;
-            cursor: pointer;
-            color: #666;
-            border: none; background: none;
-        }
-
-        .login-card h2 {
-            margin-bottom: 20px;
-            color: var(--mizuno-blue);
+        .card-cadastro h2 {
+            margin-top: 0;
+            color: #1c1e21;
             text-align: center;
         }
 
-        .login-field {
-            margin-bottom: 15px;
+        .form-group {
+            margin-bottom: 1rem;
         }
 
-        .login-field label {
+        .form-group label {
             display: block;
-            margin-bottom: 5px;
-            font-size: 0.9rem;
-            font-weight: bold;
+            margin-bottom: 0.5rem;
+            color: #4b4f56;
         }
 
-        .login-field input {
+        .form-group input {
             width: 100%;
-            padding: 12px;
-            border: 1px solid #ddd;
+            padding: 0.75rem;
+            border: 1px solid #dddfe2;
             border-radius: 6px;
-            box-sizing: border-box;
+            box-sizing: border-box; /* Garante que o padding não estoure a largura */
         }
 
-        .btn-login-submit {
+        .btn-cadastrar {
             width: 100%;
-            padding: 15px;
-            background: var(--mizuno-blue);
-            color: white;
+            padding: 0.75rem;
+            background-color: #007bff;
             border: none;
             border-radius: 6px;
+            color: white;
+            font-size: 1rem;
             font-weight: bold;
             cursor: pointer;
-            margin-top: 10px;
+            transition: background-color 0.3s;
+        }
+
+        .btn-cadastrar:hover {
+            background-color: #0056b3;
+        }
+
+        .footer-link {
+            text-align: center;
+            margin-top: 1rem;
+            font-size: 0.9rem;
+        }
+
+        .footer-link a {
+            color: #007bff;
+            text-decoration: none;
         }
     </style>
 </head>
 <body>
 
-    <button class="btn-abrir-login-exemplo" onclick="toggleLogin()">Minha Conta / Login</button>
-
-    <section id="section-mizuno">
-        <div class="mizuno-container">
-            <div class="mizuno-header">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b1/Mizuno_logo.svg/2560px-Mizuno_logo.svg.png" alt="Mizuno" class="mizuno-logo">
-                <h2>Tecnologia em cada passo</h2>
+    <div class="card-cadastro">
+        <h2>Criar Conta</h2>
+        <form action="#">
+            <div class="form-group">
+                <label for="nome">Nome Completo</label>
+                <input type="text" id="nome" placeholder="Ex: João Silva" required>
             </div>
 
-            <div class="mizuno-grid">
-                <div class="mizuno-card">
-                    <div class="mizuno-img-box">
-                        <img src="https://images.mizuno.com.br/1000x1000/providers/20d88562-b94d-4870-85f8-b39174092f3b/products/4149021/0088/tenis-mizuno-wave-prophecy-13-azul-marinho-0088-1.jpg" alt="Produto 1">
-                    </div>
-                    <div class="mizuno-info">
-                        <h3>Wave Prophecy 13</h3>
-                        <span class="mizuno-price">R$ 1.599,90</span>
-                        <a href="#" class="mizuno-btn">Ver Produto</a>
-                    </div>
-                </div>
-
-                <div class="mizuno-card">
-                    <div class="mizuno-img-box">
-                        <img src="https://images.mizuno.com.br/1000x1000/providers/20d88562-b94d-4870-85f8-b39174092f3b/products/4149250/0259/tenis-mizuno-wave-sky-7-cinza-0259-1.jpg" alt="Produto 2">
-                    </div>
-                    <div class="mizuno-info">
-                        <h3>Wave Sky 7</h3>
-                        <span class="mizuno-price">R$ 999,90</span>
-                        <a href="#" class="mizuno-btn">Ver Produto</a>
-                    </div>
-                </div>
+            <div class="form-group">
+                <label for="email">E-mail</label>
+                <input type="email" id="email" placeholder="seu@email.com" required>
             </div>
-        </div>
-    </section>
 
-    <div id="login-overlay">
-        <div class="login-card">
-            <button class="login-close" onclick="toggleLogin()">&times;</button>
-            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b1/Mizuno_logo.svg/2560px-Mizuno_logo.svg.png" alt="Mizuno" style="width: 80px; display: block; margin: 0 auto 20px;">
-            <h2>Acesse sua Conta</h2>
-            
-            <form action="#">
-                <div class="login-field">
-                    <label>E-mail</label>
-                    <input type="email" placeholder="Digite seu e-mail" required>
-                </div>
-                <div class="login-field">
-                    <label>Senha</label>
-                    <input type="password" placeholder="Digite sua senha" required>
-                </div>
-                <button type="submit" class="btn-login-submit">Entrar</button>
-            </form>
-            
-            <p style="text-align: center; font-size: 0.8rem; margin-top: 20px; color: #666;">
-                Ainda não tem conta? <a href="#" style="color: var(--mizuno-blue); font-weight: bold;">Cadastre-se</a>
-            </p>
+            <div class="form-group">
+                <label for="senha">Senha</label>
+                <input type="password" id="senha" placeholder="Mínimo 8 caracteres" required>
+            </div>
+
+            <button type="submit" class="btn-cadastrar">Cadastrar</button>
+        </form>
+
+        <div class="footer-link">
+            Já tem uma conta? <a href="#">Faça login</a>
         </div>
     </div>
-
-    <script>
-        function toggleLogin() {
-            const login = document.getElementById('login-overlay');
-            login.classList.toggle('active');
-        }
-
-        // Fecha o login se clicar fora da caixa branca
-        window.onclick = function(event) {
-            const login = document.getElementById('login-overlay');
-            if (event.target == login) {
-                login.classList.remove('active');
-            }
-        }
-    </script>
 
 </body>
 </html>
